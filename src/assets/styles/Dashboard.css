@@ -1,0 +1,11 @@
+.dashboard_main {
+    margin-left: 250px;
+    margin-top: 5vh;
+    font-size: 28px;
+    padding: 0px 10px;
+}
+
+body {
+    background-color: var(--dashboard-main-bg);
+    color: var(--dashboard-main-color);
+}

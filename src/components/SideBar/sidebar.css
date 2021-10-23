@@ -1,0 +1,26 @@
+.dashboard_sidebar {
+    height: 100%;
+    width: 250px;
+    position: fixed;
+    z-index: 1;
+    top: 5vh;
+    left: 0;
+    background-color: var(--dashboard-bg);
+    overflow-x: hidden;
+    border-top: 1px solid gray;
+}
+
+
+.sidebar-default-btn {
+    background-color: var(--sidebar-btn-bg) !important;
+    color: var(--sidebar-btn-color) !important;
+}
+
+.sidebar-default-btn:hover {
+    background-color: var(--sidebar-btn-hover) !important;
+}
+
+.sidebar-default-btn:focus, .sidebar-default-btn:active, .sidebar-default-btn.active {
+    background-color: var(--sidebar-btn-focus) !important;
+    color: #fff !important;
+}

@@ -1,0 +1,16 @@
+
+:root {
+    /*Dashboard Colors*/
+    --dashboard-bg: #2a3042;
+    --dashboard-main-bg: #222736;
+    --dashboard-main-color: #fff;
+
+    /*Brand Colors*/
+    --brand-color: rgb(102, 236, 192);
+
+    /*Sidebar button  colors*/
+    --sidebar-btn-color: rgb(187, 187, 187);
+    --sidebar-btn-bg: #2a3042;
+    --sidebar-btn-hover: #353458;
+    --sidebar-btn-focus: #47475c;
+}

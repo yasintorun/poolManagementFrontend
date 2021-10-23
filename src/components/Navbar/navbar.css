@@ -1,0 +1,24 @@
+
+.dashboard_navbar {
+    height: 5vh;
+    background-color: antiquewhite;
+    width: 100%;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    background-color: var(--dashboard-bg);
+    overflow-x: hidden;
+}
+
+.dashboard_navbar_main {
+   height: 5vh;
+   display: flex;
+   justify-content: space-between;
+   align-items: center; 
+}
+
+.brand_header {
+    font-size: 28px;
+    font-weight: 800;
+    color: var(--brand-color);
+}
