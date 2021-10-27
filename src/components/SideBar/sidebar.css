@@ -3,7 +3,7 @@
     width: 250px;
     position: fixed;
     z-index: 1;
-    top: 5vh;
+    top: 50px;
     left: 0;
     background-color: var(--dashboard-bg);
     overflow-x: hidden;

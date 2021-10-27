@@ -81,8 +81,7 @@ export default function HomePage() {
                                 Home
                             </Menu.Item>
                             <Menu.Item as='a'>Work</Menu.Item>
-                            <Menu.Item as='a'>Company</Menu.Item>
-                            <Menu.Item as='a'>Careers</Menu.Item>
+                            
                             <Menu.Item position='right'>
                                 <Button  as={NavLink} to="/auth/login" inverted={!fixed} >
                                     Giriş Yap

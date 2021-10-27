@@ -9,7 +9,6 @@ export default function AuthDashboard() {
         <>
             <Route path="/auth/register" component={RegisterPage} exact />
             <Route path="/auth/login" component={LoginPage} exact />
-            
         </>
     )
 }

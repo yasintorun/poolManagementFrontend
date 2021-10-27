@@ -1,17 +1,15 @@
 
 .dashboard_navbar {
-    height: 5vh;
+    height: 50px;
     background-color: antiquewhite;
     width: 100%;
     position: fixed;
-    z-index: 1;
     top: 0;
     background-color: var(--dashboard-bg);
-    overflow-x: hidden;
 }
 
 .dashboard_navbar_main {
-   height: 5vh;
+   height: 50px;
    display: flex;
    justify-content: space-between;
    align-items: center; 

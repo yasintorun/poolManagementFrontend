@@ -1,6 +1,6 @@
 import React from 'react'
 import './navbar.css'
-export default function Navbar() {
+export default function Navbar(props) {
     return (
         <div className="dashboard_navbar">
             <div className="dashboard_navbar_main">
@@ -8,7 +8,7 @@ export default function Navbar() {
                     Pool Management
                 </div>
                 <div className="top-items">
-                    
+                    {props.children}
                 </div>
             </div>
         </div>
