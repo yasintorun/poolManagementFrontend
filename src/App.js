@@ -1,6 +1,7 @@
 import './assets/styles/App.css'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'semantic-ui-css/semantic.min.css'
+import './assets/styles/custom-theme.css'
 import HomeDashboard from './layouts/HomeDashboard';
 import { Route, Switch } from 'react-router';
 import LoginPage from './pages/LoginPage';
@@ -16,6 +17,7 @@ import { ToastContainer } from 'react-toastify';
 import AdminDashboard from './layouts/AdminDashboard'
 import { addPoolLanes, getAllPoolLanes } from './store/actions/poolLaneActions';
 import { getAllRoles } from './store/actions/roleActions';
+import { getAllUsers } from './store/actions/userActions';
 require('dotenv').config()
 function App() {
 
@@ -25,6 +27,7 @@ function App() {
     dispatch(getAllPools)
     dispatch(getAllPoolLanes)
     dispatch(getAllRoles)
+    dispatch(getAllUsers)
    // dispatch(addPoolLanes({laneName:"asdd", pool:{poolId: 1}}))
   }, [])
 

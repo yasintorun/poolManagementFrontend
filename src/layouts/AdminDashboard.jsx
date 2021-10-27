@@ -8,6 +8,7 @@ import PoolList from '../pages/PoolPages/PoolList'
 import { NavLink } from 'react-router-dom'
 import PoolLaneList from '../pages/PoolLanePages/PoolLaneList'
 import RoleList from '../pages/RolePages/RoleList'
+import UserList from '../pages/UserPages/UserList'
 
 export default function AdminDashboard() {
     return (
@@ -40,6 +41,10 @@ export default function AdminDashboard() {
                     <Icon name="user" />
                     Roller
                 </Button>
+                <Button className="p-4 sidebar-default-btn" as={NavLink} to="/dashboard/user-list">
+                    <Icon name="users" />
+                    Kullanıcılar
+                </Button>
             </SideBar>
 
             <main className="dashboard_main">
@@ -47,6 +52,7 @@ export default function AdminDashboard() {
                     <Route path="/dashboard/pool-list" component={PoolList} exact />
                     <Route path="/dashboard/pool-lane-list" component={PoolLaneList} exact />
                     <Route path="/dashboard/role-list" component={RoleList} exact />
+                    <Route path="/dashboard/user-list" component={UserList} exact />
                 </div>
             </main>
         </div>

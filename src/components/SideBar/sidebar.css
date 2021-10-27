@@ -13,14 +13,16 @@
 
 .sidebar-default-btn {
     background-color: var(--sidebar-btn-bg) !important;
-    color: var(--sidebar-btn-color) !important;
+    color: var(--sidebar-btn-text) !important;
 }
 
 .sidebar-default-btn:hover {
-    background-color: var(--sidebar-btn-hover) !important;
+    background-color: var(--sidebar-btn-color) !important;
+    opacity: 0.8;
+    color: #fff !important;
 }
 
 .sidebar-default-btn:focus, .sidebar-default-btn:active, .sidebar-default-btn.active {
-    background-color: var(--sidebar-btn-focus) !important;
+    background-color: var(--sidebar-btn-color) !important;
     color: #fff !important;
 }

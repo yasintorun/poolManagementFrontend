@@ -1,0 +1,4 @@
+.ui.inverted.teal.table {
+    background-color: var(--dark-table-color)!important;
+    color: #fff!important;
+}
