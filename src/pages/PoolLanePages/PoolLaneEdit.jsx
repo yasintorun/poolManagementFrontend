@@ -7,7 +7,6 @@ import YTInput from '../../utilities/customs/YTInput';
 import AddModal from '../../components/Modals/AddModal';
 import { useDispatch } from 'react-redux';
 import { addPoolLanes, editPoolLane } from '../../store/actions/poolLaneActions';
-import YTDropdown from '../../utilities/customs/YTDropdown';
 
 export default function PoolLaneEdit({ lane }) {
     const initialValues = { ...lane };

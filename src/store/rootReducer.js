@@ -1,6 +1,7 @@
 //All states
 
 import { combineReducers } from "redux";
+import appointmentReducer from "./reducers/appointmentReducer";
 import poolLaneReducer from "./reducers/poolLaneReducer";
 import poolReducer from "./reducers/poolReducer";
 import roleReducer from "./reducers/roleReducer";
@@ -11,6 +12,7 @@ const rootReducer = combineReducers({
     poolLanes: poolLaneReducer,
     roles: roleReducer,
     users: userReducer,
+    appointments: appointmentReducer
 })
 
 export default rootReducer

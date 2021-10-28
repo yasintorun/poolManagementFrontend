@@ -5,7 +5,6 @@ import { FormField,Label } from 'semantic-ui-react'
 export default function YTInput({...props}) {
 
     const [field,meta] = useField(props)
-    
     return (
         <FormField error={meta.touched && !!meta.error}>
            <input {...field} {...props} />

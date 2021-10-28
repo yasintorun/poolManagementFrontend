@@ -2,6 +2,9 @@ import './assets/styles/App.css'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'semantic-ui-css/semantic.min.css'
 import './assets/styles/custom-theme.css'
+import 'react-datetime-picker/dist/DateTimePicker.css'
+import 'react-calendar/dist/Calendar.css'
+import 'react-clock/dist/Clock.css'
 import HomeDashboard from './layouts/HomeDashboard';
 import { Route, Switch } from 'react-router';
 import LoginPage from './pages/LoginPage';
@@ -18,6 +21,7 @@ import AdminDashboard from './layouts/AdminDashboard'
 import { addPoolLanes, getAllPoolLanes } from './store/actions/poolLaneActions';
 import { getAllRoles } from './store/actions/roleActions';
 import { getAllUsers } from './store/actions/userActions';
+import { getAllAppointments } from './store/actions/appointmentActions';
 require('dotenv').config()
 function App() {
 
@@ -28,6 +32,7 @@ function App() {
     dispatch(getAllPoolLanes)
     dispatch(getAllRoles)
     dispatch(getAllUsers)
+    dispatch(getAllAppointments)
    // dispatch(addPoolLanes({laneName:"asdd", pool:{poolId: 1}}))
   }, [])
 

@@ -1,17 +1,15 @@
-import React from 'react'
 import { useField } from 'formik'
-import { FormField,Label } from 'semantic-ui-react'
+import React from 'react'
+import { Dropdown, Form } from 'semantic-ui-react'
 
 export default function YTDropdown({...props}) {
-    console.log(props)
-    const [field,meta] = useField(props)
-    
+    const [field, meta, helpers] = useField(props.name)
     return (
-        <FormField error={meta.touched && !!meta.error}>
-           {props?.children}
-           {meta.touched && !!meta.error ? (
-                <Label pointing basic color="red" content={meta.error}></Label>
-           ):null}
-        </FormField>
+        <Form.Dropdown
+            selection
+            onChange={(event, data) => helpers.setValue(data.value)}
+            error={!!meta.error}
+            {...props}
+        />
     )
 }

@@ -8,6 +8,9 @@ export default function SideBar(props) {
             <Button.Group vertical fluid className="w-100">
                 {props.children}
             </Button.Group>
+            <p className="dashboard_sidebar_footer">
+                Yasin Torun
+            </p>
         </div>
     )
 }

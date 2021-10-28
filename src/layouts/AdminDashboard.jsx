@@ -9,6 +9,9 @@ import { NavLink } from 'react-router-dom'
 import PoolLaneList from '../pages/PoolLanePages/PoolLaneList'
 import RoleList from '../pages/RolePages/RoleList'
 import UserList from '../pages/UserPages/UserList'
+import AppointmentList from '../pages/AppointmentPages/AppointmentList'
+import YTAccordion from '../utilities/customs/YTAccordion'
+import AppointmentAdd from '../pages/AppointmentPages/AppointmentAdd'
 
 export default function AdminDashboard() {
     return (
@@ -26,25 +29,34 @@ export default function AdminDashboard() {
 
             <SideBar>
                 <Button className="p-4 sidebar-default-btn" as={NavLink} to="/dashboard/home">
-                    <Icon name="user" />
+                    <Icon name="home" />
                     Dashboard
                 </Button>
                 <Button className="p-4 sidebar-default-btn" as={NavLink} to="/dashboard/pool-list">
-                    <Icon name="user" />
+                    <Icon name="map" />
                     Havuzlar
                 </Button>
                 <Button className="p-4 sidebar-default-btn" as={NavLink} to="/dashboard/pool-lane-list">
-                    <Icon name="user" />
+                    <Icon name="road" />
                     Havuz Şeritleri
                 </Button>
                 <Button className="p-4 sidebar-default-btn" as={NavLink} to="/dashboard/role-list">
-                    <Icon name="user" />
+                    <Icon name="user secret" />
                     Roller
                 </Button>
                 <Button className="p-4 sidebar-default-btn" as={NavLink} to="/dashboard/user-list">
                     <Icon name="users" />
                     Kullanıcılar
                 </Button>
+                <Button className="p-4 sidebar-default-btn" as={NavLink} to="/dashboard/appointment-list">
+                    <Icon name="calendar check" />
+                    Randevular
+                </Button>
+                <Button className="p-4 sidebar-default-btn" as={NavLink} to="/dashboard/appointment-add">
+                    <Icon name="plus" />
+                    Randevu Oluştur
+                </Button>
+                
             </SideBar>
 
             <main className="dashboard_main">
@@ -53,6 +65,8 @@ export default function AdminDashboard() {
                     <Route path="/dashboard/pool-lane-list" component={PoolLaneList} exact />
                     <Route path="/dashboard/role-list" component={RoleList} exact />
                     <Route path="/dashboard/user-list" component={UserList} exact />
+                    <Route path="/dashboard/appointment-list" component={AppointmentList} exact />
+                    <Route path="/dashboard/appointment-add" component={AppointmentAdd} exact />
                 </div>
             </main>
         </div>
