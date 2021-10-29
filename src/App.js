@@ -6,11 +6,11 @@ import 'react-datetime-picker/dist/DateTimePicker.css'
 import 'react-calendar/dist/Calendar.css'
 import 'react-clock/dist/Clock.css'
 import HomeDashboard from './layouts/HomeDashboard';
-import { Route, Switch } from 'react-router';
+import { Route, Switch, useHistory } from 'react-router';
 import LoginPage from './pages/LoginPage';
 import AuthDashboard from './layouts/AuthDashboard';
 import SidebarExampleSidebar from './pages/TestSideBar';
-import { useEffect } from 'react';
+import { createContext, useEffect } from 'react';
 import PoolService from './services/poolService';
 import { getAllPools, addPools, add } from './store/actions/poolActions';
 import { useDispatch } from 'react-redux';
@@ -22,8 +22,17 @@ import { addPoolLanes, getAllPoolLanes } from './store/actions/poolLaneActions';
 import { getAllRoles } from './store/actions/roleActions';
 import { getAllUsers } from './store/actions/userActions';
 import { getAllAppointments } from './store/actions/appointmentActions';
+import _404NotFound from './pages/Errors/_404NotFound';
+import _500InternalServer from './pages/Errors/_500InternalServer';
+import YTSwitch from './utilities/customs/YTSwitch';
+import Dashboard from './layouts/Dashboard';
+import { types } from './services/localStoregeService';
 require('dotenv').config()
+
+
+
 function App() {
+
 
   const dispatch = useDispatch()
 
@@ -50,15 +59,27 @@ function App() {
         draggable
         pauseOnHover
       />
+      {localStorage.getItem(types.USER) && <SignIn />}
+      <YTSwitch>
+        
 
-      <Switch>
-        <Route path="/auth*" component={AuthDashboard} />
-        <Route path="/test*" component={SidebarExampleSidebar} />
-        <Route path="/dashboard" component={AdminDashboard} />
-        <Route path="" component={HomeDashboard} exact />
-      </Switch>
+        {/*Kullanıcı Giriş yapana dek bu dashboardlar çalışacak*/}
+        <Route path="/dashboard*" exact component={Dashboard} />
+        <Route path="/auth*" exact component={AuthDashboard} />
+        <Route path="/" component={HomeDashboard} exact /> 
+        <Route path="/404" exact component={_404NotFound} />
+        <Route path="/500" exact component={_500InternalServer} />
+      </YTSwitch>
     </div>
   );
+}
+
+const SignIn = () => {
+  const history = useHistory()
+  useEffect(() => {
+    history.push("/dashboard/admin")
+  }, [])
+  return null
 }
 
 export default App;

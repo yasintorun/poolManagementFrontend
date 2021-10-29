@@ -10,6 +10,7 @@ import YTFormField from '../../utilities/customs/YTFormField'
 import YTDropdown from '../../utilities/customs/YTDropdown'
 import { useDispatch } from 'react-redux'
 import { addAppointment } from '../../store/actions/appointmentActions'
+import { Formatter } from '../../utilities/Formatter'
 
 export default function AppointmentAdd() {
 
@@ -45,7 +46,6 @@ export default function AppointmentAdd() {
     const hourOptions = ['07', '08', '09', '10', '11', '12', '13', '14', '15', '16', '17', '18', '19', '20', '21', '22']
     const minuteOptions = ['00', '15', '30', '45']
 
-    const [value, onChange] = useState(new Date());
     return (
         <div className="w-50 m-auto">
             <PageHeader text="Randevu Oluştur" />
@@ -66,7 +66,7 @@ export default function AppointmentAdd() {
                             <Form.Group>
                                 <Form.Field>
                                     <label className="text-white">Başlama Tarihi</label>
-                                    <YTInput name="date" type="date" />
+                                    <YTInput min={Formatter.getDate()} name="date" type="date" />
                                 </Form.Field>
                                 <Form.Field>
                                     <label className="text-white">Saat</label>
@@ -79,7 +79,7 @@ export default function AppointmentAdd() {
                             </Form.Group>
                             <Form.Group>
                                 <Form.Field name="time">
-                                    <label className="text-white">Kaç Saat yüzecek?</label>
+                                    <label className="text-white">Seans Saati?</label>
                                     <YTDropdown placeholder="Saat seçiniz" name="time" options={Array.from({ length: 3 }, (v, k) => k + 1).map((k) => { return { key: k, value: k, text: k } })} />
                                 </Form.Field>
                             </Form.Group>

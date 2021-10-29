@@ -4,8 +4,8 @@ import { NavLink } from 'react-router-dom'
 import { Button, Form, Grid, Header, Icon, Image, Message, Segment } from 'semantic-ui-react'
 
 const genderOptions = [
-    { key: 'man', value: 'man', text: 'Erkek' },
-    { key: 'woman', value: 'woman', text: 'Kadın' },
+    { key: 'man', value: '1', text: 'Erkek' },
+    { key: 'woman', value: '0', text: 'Kadın' },
 ]
 
 const RegisterPage = () => (

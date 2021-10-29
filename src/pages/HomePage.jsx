@@ -21,7 +21,8 @@ const HomepageHeading = ({ mobile }) => (
     <Container text>
         <Header
             as='h1'
-            content='Imagine-a-Company'
+            content='Pool Management'
+            color="teal"
             inverted
             style={{
                 fontSize: mobile ? '2em' : '4em',
@@ -32,7 +33,7 @@ const HomepageHeading = ({ mobile }) => (
         />
         <Header
             as='h2'
-            content='Do whatever you want when you want to.'
+            content='Güvenli, temiz ve ferah bir havuz sizi bekliyor.'
             inverted
             style={{
                 fontSize: mobile ? '1.5em' : '1.7em',
@@ -40,9 +41,11 @@ const HomepageHeading = ({ mobile }) => (
                 marginTop: mobile ? '0.5em' : '1.5em',
             }}
         />
-        <Button primary size='huge'>
-            Get Started
-            <Icon name='right arrow' />
+        <Button animated size="huge" primary>
+            <Button.Content visible>Başla</Button.Content>
+            <Button.Content hidden>
+                <Icon name='arrow right' />
+            </Button.Content>
         </Button>
     </Container>
 )
@@ -64,7 +67,6 @@ export default function HomePage() {
                 onBottomPassedReverse={() => hideFixedMenu()}
             >
                 <Segment
-                    inverted
                     textAlign='center'
                     style={{ minHeight: 700, padding: '1em 0em' }}
                     vertical
@@ -78,12 +80,12 @@ export default function HomePage() {
                     >
                         <Container>
                             <Menu.Item as='a' active>
-                                Home
+                                Anasayfa
                             </Menu.Item>
-                            <Menu.Item as='a'>Work</Menu.Item>
-                            
+                            <Menu.Item as='a'>S.S.S</Menu.Item>
+
                             <Menu.Item position='right'>
-                                <Button  as={NavLink} to="/auth/login" inverted={!fixed} >
+                                <Button as={NavLink} to="/auth/login" inverted={!fixed} >
                                     Giriş Yap
                                 </Button>
                                 <Button as={NavLink} to="/auth/register" inverted={!fixed} primary={fixed} style={{ marginLeft: '0.5em' }}>

@@ -16,7 +16,6 @@ export default function () {
         poolAddress: Yup.string().required("Havuz adresi zorunlu"),
     });
 
-    const addValues = useRef(initialValues)
 
     const dispatch = useDispatch()
 
@@ -32,7 +31,6 @@ export default function () {
                 trigger={<Button icon="plus" positive content="Yeni Havuz Ekle" />}
             >
                 <Formik
-                    innerRef={addValues}
                     initialValues={initialValues}
                     validationSchema={schema}
                     onSubmit={(values) => {
