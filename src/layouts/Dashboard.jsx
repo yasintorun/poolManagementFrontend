@@ -6,6 +6,7 @@ import { getAllRoles } from '../store/actions/roleActions'
 import { PathRedirect, ProtectedRoute } from '../utilities/customs/YTRoute'
 import YTSwitch from '../utilities/customs/YTSwitch'
 import AdminDashboard from './AdminDashboard'
+import ClientDashboard from './ClientDashboard'
 
 export default function Dashboard() {
 
@@ -27,13 +28,17 @@ export default function Dashboard() {
             case 2: //admin
                 return (
                     <>
-                    {console.log("asdasdasd")}
                         <ProtectedRoute path="/dashboard/admin*" exact component={AdminDashboard} />
                         <PathRedirect path="/dashboard" to="/dashboard/admin"/>
                     </>
                 )
             case 4: //kullanıcı
-                return (<h1>Userrrr</h1>)
+                return (
+                    <>
+                        <ProtectedRoute path="/dashboard/client*" exact component={ClientDashboard} />
+                        <PathRedirect path="/dashboard" to = "/dashboard/client" />
+                    </>
+                )
             default: 
                 return (<_404NotFound/>)
         }
