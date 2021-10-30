@@ -1,6 +1,7 @@
 
 import { Formik } from 'formik';
-import React from 'react'
+import React, { useEffect } from 'react'
+import { useHistory } from 'react-router';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, NavLink } from 'react-router-dom'
 import { Button, Form, Grid, Header, Icon, Image, Label, Message, Segment } from 'semantic-ui-react'
@@ -17,7 +18,7 @@ export default function LoginPage() {
     });
     
     const auth = useSelector(state => state.auth)
-
+    const history = useHistory()
     const dispatch = useDispatch()
     const loginSubmit = (values) => {
         // let authService = new AuthService()
@@ -25,6 +26,10 @@ export default function LoginPage() {
         dispatch(login(values))
     }
 
+    useEffect(() => {
+        if(auth.data)
+            history.push("/dashboard")
+      }, [auth.data])
     return (
         <Grid textAlign='center' style={{ height: '100vh' }} verticalAlign='middle'>
             <Grid.Column style={{ maxWidth: 450 }}>

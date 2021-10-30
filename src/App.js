@@ -6,14 +6,14 @@ import 'react-datetime-picker/dist/DateTimePicker.css'
 import 'react-calendar/dist/Calendar.css'
 import 'react-clock/dist/Clock.css'
 import HomeDashboard from './layouts/HomeDashboard';
-import { Route, Switch, useHistory } from 'react-router';
+import { Route, Switch, useHistory, useLocation } from 'react-router';
 import LoginPage from './pages/LoginPage';
 import AuthDashboard from './layouts/AuthDashboard';
 import SidebarExampleSidebar from './pages/TestSideBar';
-import { createContext, useEffect } from 'react';
+import { createContext, useEffect, useState } from 'react';
 import PoolService from './services/poolService';
 import { getAllPools, addPools, add } from './store/actions/poolActions';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector, useStore } from 'react-redux';
 import "react-toastify/dist/ReactToastify.min.css"
 import { Button } from 'semantic-ui-react';
 import { ToastContainer } from 'react-toastify';
@@ -27,14 +27,18 @@ import _500InternalServer from './pages/Errors/_500InternalServer';
 import YTSwitch from './utilities/customs/YTSwitch';
 import Dashboard from './layouts/Dashboard';
 import { types } from './services/localStoregeService';
+import { PathRedirect, ProtectedRoute } from './utilities/customs/YTRoute';
+import RoleService from './services/roleService'
 require('dotenv').config()
 
 
 
 function App() {
 
-
   const dispatch = useDispatch()
+  const history = useHistory()
+  const location = useLocation()
+  const auth = useSelector(state => state.auth)
 
   useEffect(() => {
     dispatch(getAllPools)
@@ -42,13 +46,19 @@ function App() {
     dispatch(getAllRoles)
     dispatch(getAllUsers)
     dispatch(getAllAppointments)
-   // dispatch(addPoolLanes({laneName:"asdd", pool:{poolId: 1}}))
+    console.log(location)
   }, [])
+
+  useEffect(() => {
+    if(auth.data != null && !location.pathname.startsWith("/dashboard")) {
+      history.push("/dashboard")
+    }
+  }, [auth.data])
 
   return (
     <div className="App">
       <ToastContainer
-      theme="colored"
+        theme="colored"
         position="top-right"
         autoClose={3000}
         hideProgressBar={false}
@@ -59,27 +69,13 @@ function App() {
         draggable
         pauseOnHover
       />
-      {localStorage.getItem(types.USER) && <SignIn />}
-      <YTSwitch>
-        
 
-        {/*Kullanıcı Giriş yapana dek bu dashboardlar çalışacak*/}
-        <Route path="/dashboard*" exact component={Dashboard} />
+      <YTSwitch>
+        <ProtectedRoute path="/dashboard*" exact component={Dashboard} />
         <Route path="/auth*" exact component={AuthDashboard} />
-        <Route path="/" component={HomeDashboard} exact /> 
-        <Route path="/404" exact component={_404NotFound} />
-        <Route path="/500" exact component={_500InternalServer} />
+        <Route path="/" component={HomeDashboard} exact />
       </YTSwitch>
     </div>
   );
 }
-
-const SignIn = () => {
-  const history = useHistory()
-  useEffect(() => {
-    history.push("/dashboard/admin")
-  }, [])
-  return null
-}
-
 export default App;

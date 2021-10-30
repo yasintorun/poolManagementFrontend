@@ -3,7 +3,7 @@ import { Button, ButtonGroup, Dropdown, Icon } from 'semantic-ui-react'
 import Navbar from '../components/Navbar/Navbar'
 import SideBar from '../components/SideBar/SideBar'
 import '../assets/styles/Dashboard.css'
-import { Route } from 'react-router'
+import { Route, useHistory } from 'react-router'
 import PoolList from '../pages/PoolPages/PoolList'
 import { NavLink } from 'react-router-dom'
 import PoolLaneList from '../pages/PoolLanePages/PoolLaneList'
@@ -15,9 +15,18 @@ import AppointmentAdd from '../pages/AppointmentPages/AppointmentAdd'
 import _404NotFound from '../pages/Errors/_404NotFound'
 import YTSwitch from '../utilities/customs/YTSwitch'
 import { types } from '../services/localStoregeService'
+import { useDispatch } from 'react-redux'
+import { logout } from '../store/actions/authActions'
 
 export default function AdminDashboard() {
     const url = "/dashboard/admin"
+    const history = useHistory()
+
+    const dispatch = useDispatch()
+
+    const logoutClick = () => {
+        dispatch(logout())
+    }
     return (
         <div className="dashboard">
             <Navbar>
@@ -25,7 +34,7 @@ export default function AdminDashboard() {
                     <Dropdown button icon="user" direction="left">
                         <Dropdown.Menu>
                             <Dropdown.Item icon="setting" text="Ayarlar" />
-                            <Dropdown.Item icon="sign-out" text="Çıkış Yap" className="text-danger" onClick={() => {localStorage.removeItem(types.USER); window.location.reload()}}/>
+                            <Dropdown.Item icon="sign-out" text="Çıkış Yap" className="text-danger" onClick={()=>logoutClick()}/>
                         </Dropdown.Menu>
                     </Dropdown>
                 </ButtonGroup>

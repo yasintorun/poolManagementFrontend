@@ -12,10 +12,6 @@ export default function PoolList() {
 
     const dispatch = useDispatch()
 
-    useEffect(() => {
-        dispatch(getAllPools)
-    }, [])
-
     const poolDelete = (poolId)=> {
         console.log(poolId)
         DeleteAlert("Havuz", "Bu işlemi geri alamazsın", ()=>dispatch(deletePool(poolId)))

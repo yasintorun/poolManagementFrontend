@@ -14,6 +14,8 @@ export default function authReducer(state=defaultState, {type, payload}) {
             return {...state, loading:false, data:payload}
         case authTypes.LOGIN_ERROR:
             return {...state, loading:false, error:"Login Error"}
+        case authTypes.USER_LOGOUT:
+                return {...state, data:null, loading:false, error:""}
         default:
             return {...state, loading:false, error:""}
     }
