@@ -17,6 +17,7 @@ import YTSwitch from '../utilities/customs/YTSwitch'
 import { types } from '../services/localStoregeService'
 import { useDispatch } from 'react-redux'
 import { logout } from '../store/actions/authActions'
+import PoolPackageList from '../pages/PoolPackagePages/PoolPackageList'
 
 export default function AdminDashboard() {
     const url = "/dashboard/admin"
@@ -45,6 +46,10 @@ export default function AdminDashboard() {
                     <Icon name="home blue" />
                     Dashboard
                 </Button>
+                <Button className="p-4 sidebar-default-btn" as={NavLink} to={url+"/user-list"}>
+                    <Icon name="users teal" />
+                    Kullanıcılar
+                </Button>
                 <Button className="p-4 sidebar-default-btn" as={NavLink} to={url+"/pool-list"}>
                     <Icon name="map teal" />
                     Havuzlar
@@ -53,13 +58,9 @@ export default function AdminDashboard() {
                     <Icon name="road teal"/>
                     Havuz Şeritleri
                 </Button>
-                <Button className="p-4 sidebar-default-btn" as={NavLink} to={url+"/role-list"}>
-                    <Icon name="user secret teal" />
-                    Roller
-                </Button>
-                <Button className="p-4 sidebar-default-btn" as={NavLink} to={url+"/user-list"}>
-                    <Icon name="users teal" />
-                    Kullanıcılar
+                <Button className="p-4 sidebar-default-btn" as={NavLink} to={url+"/pool-package-list"}>
+                    <Icon name="list teal" />
+                    Havuz Paketleri
                 </Button>
                 <Button className="p-4 sidebar-default-btn" as={NavLink} to={url+"/appointment-list"}>
                     <Icon name="calendar check teal" />
@@ -68,6 +69,10 @@ export default function AdminDashboard() {
                 <Button className="p-4 sidebar-default-btn" as={NavLink} to={url+"/appointment-add"}>
                     <Icon name="plus" color="teal"/>
                     Randevu Oluştur
+                </Button>
+                <Button className="p-4 sidebar-default-btn" as={NavLink} to={url+"/role-list"}>
+                    <Icon name="user secret teal" />
+                    Roller
                 </Button>
                 
             </SideBar>
@@ -81,6 +86,7 @@ export default function AdminDashboard() {
                         <Route path={url+"/user-list"} component={UserList} exact />
                         <Route path={url+"/appointment-list"} component={AppointmentList} exact />
                         <Route path={url+"/appointment-add"} component={AppointmentAdd} exact />
+                        <Route path={url+"/pool-package-list"} component={PoolPackageList} exact />
                         <Route path={url+"/home"} exact/>
                         <Route path={url} exact/>
                     </YTSwitch>

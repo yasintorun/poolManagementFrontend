@@ -14,9 +14,7 @@ export default function Dashboard() {
     const roles = useSelector(state => state.roles)
     const history = useHistory()
 
-    useEffect(() => {
-        console.log(roles)
-    }, [])
+
 
     // useEffect(() => {
     //     if(auth.data)
@@ -36,7 +34,7 @@ export default function Dashboard() {
                 return (
                     <>
                         <ProtectedRoute path="/dashboard/client*" exact component={ClientDashboard} />
-                        <PathRedirect path="/dashboard" to = "/dashboard/client" />
+                        <PathRedirect path="/dashboard" to="/dashboard/client" />
                     </>
                 )
             default: 

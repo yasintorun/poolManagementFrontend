@@ -2,3 +2,8 @@
     background-color: var(--dark-table-color)!important;
     color: #fff!important;
 }
+
+.ui.inverted.teal.segment.custom {
+    background-color: var(--dashboard-main-bg)!important;
+    color: #fff!important;
+}

@@ -29,6 +29,7 @@ import Dashboard from './layouts/Dashboard';
 import { types } from './services/localStoregeService';
 import { PathRedirect, ProtectedRoute } from './utilities/customs/YTRoute';
 import RoleService from './services/roleService'
+import { getAllPoolPackages } from './store/actions/poolPackageActions';
 require('dotenv').config()
 
 
@@ -46,7 +47,7 @@ function App() {
     dispatch(getAllRoles)
     dispatch(getAllUsers)
     dispatch(getAllAppointments)
-    console.log(location)
+    dispatch(getAllPoolPackages)
   }, [])
 
   useEffect(() => {

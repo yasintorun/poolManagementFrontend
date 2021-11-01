@@ -16,3 +16,50 @@
   .table-actions > *{
     display: inline !important;
   }
+
+
+  .price-card {
+    margin: 20px;
+    width: 100%;
+    background-color: rgb(70, 86, 98);
+    border-radius: 10px;
+  }
+  .price-card-header {
+    text-align: center;
+    padding: 20px;
+  }
+
+  .month-3 {
+    background-color: rgb(226, 108, 108);
+  }
+  .month-6 {
+    background-color: rgb(227,161, 108);
+  }
+  .month-12 {
+    background-color: rgb(146, 108, 227)
+  }
+
+  .price {
+    font-size: 50px;
+    padding: 50px 0px;
+  }
+  .price .price-m {
+    font-size: 60px;
+  }
+
+
+  .checkout-item {
+    border: 3px solid rgba(76, 76, 194, 0.4);
+    background-color: rgba(76, 76, 194, 0.1);
+  }
+
+
+  .payment-price .price {
+    font-size: 30px;
+    color: var(--dashboard-main-bg);
+    font-weight: 600;
+  }
+  .payment-price .price-m {
+    font-size: 40px;
+    font-weight: 900;
+  }
