@@ -9,6 +9,7 @@ import poolLaneReducer from "./reducers/poolLaneReducer";
 import poolPackageReducer from "./reducers/poolPackageReducer";
 import poolReducer from "./reducers/poolReducer";
 import roleReducer from "./reducers/roleReducer";
+import userPoolPackageReducer from "./reducers/userPoolPackageReducer";
 import userReducer from "./reducers/userReducer";
 
 
@@ -23,6 +24,7 @@ const rootReducer = combineReducers({
     appointments: appointmentReducer,
     poolPackages: poolPackageReducer,
     checkout: checkoutReducer,
+    userPackage: userPoolPackageReducer,
 })
 
 export default rootReducer

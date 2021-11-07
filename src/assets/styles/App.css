@@ -63,3 +63,29 @@
     font-size: 40px;
     font-weight: 900;
   }
+
+  .package {
+    border: 4px solid rgb(70, 72, 92);
+    min-width: 400px;
+    min-height: 500px;
+    background-color: rgb(238, 238, 238);
+    color:rgb(70, 86, 98);
+    border-top-left-radius: 30px;
+    border-bottom-right-radius: 30px;
+
+  }
+
+  .package h1 {
+    font-size: 50px;
+    font-weight: 900 !important;
+    color: rgb(0, 0, 0);
+    text-shadow: -1px -1px 0 rgba(255, 66, 66, 0.842), 1px 1px 0 #8f5b6d;
+
+  }
+  .package-name {
+    font-size: 24px;
+    font-weight: 700;
+    background-color: rgba(255, 66, 66, 0.842);
+    padding: 10px 0px;
+    color:white
+  }

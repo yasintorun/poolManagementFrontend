@@ -8,6 +8,11 @@ import { toast } from 'react-toastify'
 import { useSelector } from 'react-redux'
 import * as Yup from 'yup'
 import YTDropdown from '../utilities/customs/YTDropdown'
+import CheckoutService from '../services/checkoutService'
+import Cookies from 'js-cookie'
+import { CookieTypes } from '../utilities/cookieTypes'
+import { Formatter } from '../utilities/Formatter'
+import ChangePackageButton from '../components/ChangePackageButton'
 export default function Payment() {
     const checkout = useSelector(state => state.checkout)
     const history = useHistory()
@@ -18,26 +23,51 @@ export default function Payment() {
             history.push("/dashboard/client/choose-package")
         }
         setTimeout(() => { setLoading(false) }, 500);
+
+
     }, [])
 
 
     const initialValues = { cardNumber: "", cardName: "", cvv: "", expirationDate: "" }
 
     const schema = Yup.object().shape({
-        cardNumber: Yup.string().required("Kart numarası zorunlu").min(16, "Kart numarası 16 haneli olmalıdır").max(16, "Kart numarası 16 haneli olmalıdır"),
-        cardName: Yup.string().required("Kart adı zorunlu"),
-        cvv: Yup.string().required("Cvv zorunlu"),
+        cardNumber: Yup.string().required("Kart numarası zorunlu").length(16, "Kart numarası 16 haneli olmalıdır"),
+        cardName: Yup.string().required("Kart adı zorunlu").matches("^[a-z A-Z]*$", "Kart adı hatalı"),
+        cvv: Yup.string().required("Cvv zorunlu").length(3, "Cvv 3 haneli olmalıdır").matches("^[0-9]*$", "Cvv hatalı"),
         month: Yup.string().required("Bu alan zorunlu"),
         year: Yup.string().required("Bu alan zorunlu"),
     });
 
 
 
-    const handleChangePackageClick = () => {
-        history.push("/dashboard/client/choose-package")
+    
+    const monthOp = ["01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12"].map((v, index) => { return { key: index, value: v, text: v } })
+    const yearsOp = Array.from({ length: 8 }, (v, k) => k + 2021).map((v, index) => { return { key: index, value: v + "", text: v } })
+
+
+    const checkoutClick = (values) => {
+        let checkoutService = new CheckoutService()
+        const creditCard = {
+            ...values,
+            cardNumber: values.cardNumber + "",
+            expirationDate: values.month + "/" + values.year.slice(2, 4)
+        }
+
+        const paymentInfo = {
+            amount: checkout.poolPackage.packagePrice,
+            creditCard: creditCard,
+            paymentDate: "",
+            userId: 7,
+            item: checkout.poolPackage.packageName,
+        }
+        checkoutService.check(paymentInfo).then(result => {
+            if (result.data.success) {
+                toast.success(result.data.message)
+            } else {
+                toast.error(result.data.message)
+            }
+        })
     }
-    const monthOp = ["01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12"].map((v, index) => { return { key: index, value: index, text: v } })
-    const yearsOp = Array.from({ length: 8 }, (v, k) => k + 2021).map((v, index) => { return { key: index, value: index, text: v } })
 
     return checkout.poolPackage && (
 
@@ -64,7 +94,7 @@ export default function Payment() {
                                 </div>
                             </div>
                             <div>
-                                <Button primary className="mt-4" onClick={() => handleChangePackageClick()}>Paketi Değiştir</Button>
+                               <ChangePackageButton />
                             </div>
                         </Grid.Column>
 
@@ -77,18 +107,18 @@ export default function Payment() {
                                     initialValues={initialValues}
                                     validationSchema={schema}
                                     onSubmit={(values) => {
-                                        console.log(values)
+                                        checkoutClick(values)
                                     }}
                                 >
                                     {props => (
                                         <Form onSubmit={props.handleSubmit}>
                                             <Form.Field>
                                                 <label>Kart Numarası</label>
-                                                <YTInput name="cardNumber" type="number" placeholder='kart numarası' />
+                                                <YTInput name="cardNumber" type="number" placeholder='kart numarası' id="cc" />
                                             </Form.Field>
                                             <Form.Field>
                                                 <label>Ad Soyad</label>
-                                                <YTInput name="cardName" placeholder='Ad/Soyad' />
+                                                <YTInput name="cardName"  placeholder='Ad/Soyad' />
                                             </Form.Field>
                                             <Form.Group widths={2}>
                                                 <Form.Field>
@@ -102,7 +132,7 @@ export default function Payment() {
                                             </Form.Group>
                                             <Form.Field>
                                                 <label>CVV</label>
-                                                <YTInput name="cvv" type="number" placeholder='cvv' />
+                                                <YTInput name="cvv" placeholder='cvv' />
                                             </Form.Field>
                                             <Button type='submit' positive className="w-100" size="large">Öde</Button>
                                         </Form>

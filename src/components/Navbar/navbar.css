@@ -6,6 +6,7 @@
     position: fixed;
     top: 0;
     background-color: var(--dashboard-bg);
+    z-index: 999;
 }
 
 .dashboard_navbar_main {

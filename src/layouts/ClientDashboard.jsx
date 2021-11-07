@@ -7,6 +7,7 @@ import SideBar from '../components/SideBar/SideBar'
 import ChoosePoolPackage from '../pages/ChoosePoolPackage'
 import ClientAppointmentList from '../pages/client/ClientAppointmentList'
 import ClientHomePage from '../pages/client/ClientHomePage'
+import ClientPoolPackage from '../pages/client/ClientPoolPackage'
 import Payment from '../pages/Payment'
 import PoolPackageTable from '../pages/PoolPackagePages/PoolPackageTable'
 import { logout } from '../store/actions/authActions'
@@ -35,6 +36,10 @@ export default function ClientDashboard() {
                     <Icon name="home blue" />
                     Dashboard
                 </Button>
+                <Button className="p-4 sidebar-default-btn" as={NavLink} to={url + "/my-package"}>
+                    <Icon name="home blue" />
+                    Paketim
+                </Button>
                 <Button className="p-4 sidebar-default-btn" as={NavLink} to={url + "/my-appointments"}>
                     <Icon name="home blue" />
                     Randevularım
@@ -58,6 +63,7 @@ export default function ClientDashboard() {
                     <YTSwitch>
 
                         <Route path={url+"/pool-package-table"} exact component={PoolPackageTable}  />
+                        <Route path={url+"/my-package"} exact component={ClientPoolPackage}  />
                         <Route path={url+"/my-appointments"} exact component={ClientAppointmentList}  />
                         <Route path={url+"/choose-package"} exact component={ChoosePoolPackage}  />
                         <Route path={url+"/payment"} exact component={Payment}  />
