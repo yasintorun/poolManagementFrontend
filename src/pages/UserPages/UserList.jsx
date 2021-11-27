@@ -8,36 +8,96 @@ export default function UserList() {
     return (
         <div>
             <PageHeader text="Kullanıcılar" />
-            <Table celled inverted color="teal" size="small" selectable>
-                    <Table.Header>
-                        <Table.Row>
-                            <Table.HeaderCell>Id</Table.HeaderCell>
-                            <Table.HeaderCell>Eposta adresi</Table.HeaderCell>
-                            <Table.HeaderCell>Ad</Table.HeaderCell>
-                            <Table.HeaderCell>Soyad</Table.HeaderCell>
-                            <Table.HeaderCell>Cinsiyet</Table.HeaderCell>
-                            <Table.HeaderCell>Durum</Table.HeaderCell>
-                        </Table.Row>
-                    </Table.Header>
-                    <Table.Body>
-                        {
-                            users?.data?.map(user => (
-                                <Table.Row>
-                                    <Table.Cell>{user.userId}</Table.Cell>
-                                    <Table.Cell>{user.account.email}</Table.Cell>
-                                    <Table.Cell>{user.firstname}</Table.Cell>
-                                    <Table.Cell>{user.lastname}</Table.Cell>
-                                    <Table.Cell>{user.genderId}</Table.Cell>
-                                    <Table.Cell><Icon name="circle" color={user.account.status ? "green" : "red"}/></Table.Cell>
-                                    {/* <Table.Cell textAlign="right" className="table-actions">
-                                        <Popup content='Havuzu düzenle' trigger={<PoolEdit pool={pool}/>} />
-                                        <Popup negative content="Havuzu Sil" trigger={<Button icon="trash" negative onClick={()=>poolDelete(pool.poolId)}/>} />
-                                    </Table.Cell> */}
-                                </Table.Row>
-                            ))
-                        }
-                    </Table.Body>
-                </Table>
+            <div className="card">
+                <div className="card-header">
+                    <h3>Kullanıcı Listesi</h3>
+                </div>
+                <div className="card-body">
+                    <table className="table table-hover">
+                        <thead>
+                            <tr className="table-orange">
+                                <th>#</th>
+                                <th>Ad Soyad</th>
+                                <th>Eposta adresi</th>
+                                <th>Cinsiyet</th>
+                                <th>Durum</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {
+                                users?.data?.map(user => (
+                                    <tr>
+                                        <td>{user.userId}</td>
+                                        <td>
+                                            <img className="profile-btn me-3" width="60" height="60" src={`https://randomuser.me/api/portraits/women/${user.userId}.jpg`} />
+                                            {user.firstname + " " + user.lastname}
+                                        </td>
+                                        <td>{user.account.email}</td>
+                                        <td>{user.genderId !== 0 ? "Erkek" : "Kadın"}</td>
+                                        <td>
+                                            {user.account.status
+                                                ? <span className="badge bg-success">Aktif</span>
+                                                : <span className="badge bg-danger">Pasif</span>
+                                            }
+                                        </td>
+                                    </tr>
+                                ))
+                            }
+
+                            <tr>
+                                <td>8</td>
+                                <td>
+                                    <img className="profile-btn me-3" width="60" height="60" src="https://randomuser.me/api/portraits/women/31.jpg" />
+                                    Ayşe Yılmaz
+                                </td>
+                                <td>ayse@yilmaz.com</td>
+                                <td>Kadın</td>
+                                <td>
+                                    {false
+                                        ? <span className="badge bg-success">Aktif</span>
+                                        : <span className="badge bg-danger">Pasif</span>
+                                    }
+                                </td>
+                                {/* <td><Icon name="circle" color={user.account.status ? "green" : "red"} /></td> */}
+                            </tr>
+                            <tr>
+                                <td>8</td>
+                                <td>
+                                    <img className="profile-btn me-3" width="60" height="60" src="https://randomuser.me/api/portraits/men/43.jpg" />
+                                    Şahin Burak
+                                </td>
+                                <td>sahin@burak.com</td>
+                                <td>Erkek</td>
+                                <td>
+                                    {true
+                                        ? <span className="badge bg-success">Aktif</span>
+                                        : <span className="badge bg-danger">Pasif</span>
+                                    }
+                                </td>
+                                {/* <td><Icon name="circle" color={user.account.status ? "green" : "red"} /></td> */}
+                            </tr>
+                            <tr>
+                                <td>8</td>
+                                <td>
+                                    <img className="profile-btn me-3" width="60" height="60" src="https://randomuser.me/api/portraits/women/26.jpg" />
+                                    Ayşe Yılmaz
+                                </td>
+                                <td>ayse@yilmaz.com</td>
+                                <td>Kadın</td>
+                                <td>
+                                    {false
+                                        ? <span className="badge bg-success">Aktif</span>
+                                        : <span className="badge bg-danger">Pasif</span>
+                                    }
+                                </td>
+                                {/* <td><Icon name="circle" color={user.account.status ? "green" : "red"} /></td> */}
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+            </div>
+
         </div>
     )
 }

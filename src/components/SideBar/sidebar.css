@@ -4,12 +4,11 @@
     position: fixed;
     z-index: 1;
     top: 0;
-    margin:50px 0px;
+    margin:80px 0px;
     padding-bottom: 100px;
     left: 0;
     background-color: var(--dashboard-bg);
     overflow-x: hidden;
-    border-top: 1px solid gray;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -23,6 +22,12 @@
 .sidebar-default-btn {
     background-color: var(--sidebar-btn-bg) !important;
     color: var(--sidebar-btn-text) !important;
+    font-size: 18px !important;
+    text-align: left !important;
+    padding: 20px 0px !important;
+    padding-left: 10px !important;
+    font-weight: 600 !important;
+    
 }
 
 .sidebar-default-btn:hover {
@@ -32,6 +37,6 @@
 }
 
 .sidebar-default-btn:focus, .sidebar-default-btn:active, .sidebar-default-btn.active {
-    background-color: var(--sidebar-btn-color) !important;
-    color: #fff !important;
+    background-color: var(--primary-op1) !important;
+    color: var(--primary-color) !important;
 }

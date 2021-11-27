@@ -1,10 +1,11 @@
 
-:root {
+:roasdot {
     /*Dashboard Colors*/
     --dashboard-bg: #2a3042;
     --dashboard-main-bg: #222736;
     --dashboard-main-color: #fff;
 
+    --navbar-bg: 2a3042;
     /*Brand Colors*/
     --brand-color: rgb(102, 236, 192);
 
@@ -14,4 +15,27 @@
     --sidebar-btn-color: #47475c;
 
     --dark-table-color: #37495c;
+}
+
+
+:root {
+    /*Dashboard Colors*/
+    --dashboard-bg: white;
+    --dashboard-main-bg: #F8F8F8;
+    --dashboard-main-color: rgb(0, 0, 0);
+    --navbar-bg: white;
+    /*Brand Colors*/
+    --primary-color: #F93A0B;
+    --primary-hover: #cc2c05;
+
+    --primary-op1: rgba(249, 58, 11, 0.1);
+    
+    --brand-color: #F93A0B;
+
+    /*Sidebar button  colors*/
+    --sidebar-btn-text: rgba(73, 73, 73, 0.835);
+    --sidebar-btn-bg: white;
+    --sidebar-btn-color: #F93A0B;
+
+    --dark-table-color: #4a4b5f;
 }

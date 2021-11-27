@@ -89,3 +89,21 @@
     padding: 10px 0px;
     color:white
   }
+
+
+  body {
+    font-family: 'Outfit', sans-serif !important;
+  }
+
+  *, h1, h2, h3, h4, h5, h6, p, span, div, button {
+    font-family: 'Josefin Sans', sans-serif !important;
+  }
+
+  i {
+    font-family: Icons !important;
+  }
+  .w-80 {
+    width: 80px;
+  }
+
+

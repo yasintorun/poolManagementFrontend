@@ -8,7 +8,6 @@ import rootReducer from "./rootReducer";
 const middleware = [thunk]
 
 const auth = Cookies.get(CookieTypes.AUTH) || null;
-//const userInfo = Cookie.getJSON('userInfo') || null;
 
 const initialState = {
     auth: {data: JSON.parse(auth), loading: false, error:""},

@@ -33,27 +33,27 @@ export default function ClientDashboard() {
             </Navbar>
             <SideBar>
                 <Button className="p-4 sidebar-default-btn" as={NavLink} to={url + "/home"}>
-                    <Icon name="home blue" />
+                    <Icon name="home " />
                     Dashboard
                 </Button>
                 <Button className="p-4 sidebar-default-btn" as={NavLink} to={url + "/my-package"}>
-                    <Icon name="home blue" />
+                    <Icon name="home " />
                     Paketim
                 </Button>
                 <Button className="p-4 sidebar-default-btn" as={NavLink} to={url + "/my-appointments"}>
-                    <Icon name="home blue" />
+                    <Icon name="home " />
                     Randevularım
                 </Button>
                 <Button className="p-4 sidebar-default-btn" as={NavLink} to={url + "/pool-package-table"}>
-                    <Icon name="list blue" />
+                    <Icon name="list " />
                     Havuz Paket Tablosu
                 </Button>
                 <Button className="p-4 sidebar-default-btn" as={NavLink} to={url + "/choose-package"}>
-                    <Icon name="list blue" />
+                    <Icon name="list " />
                     Havuz Paketi Seç
                 </Button>
                 <Button className="p-4 sidebar-default-btn" as={NavLink} to={url + "/payment"}>
-                    <Icon name="list blue" />
+                    <Icon name="list " />
                     Ödeme Sayfası
                 </Button>
             </SideBar>

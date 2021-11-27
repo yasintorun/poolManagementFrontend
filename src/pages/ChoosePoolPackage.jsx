@@ -8,6 +8,7 @@ import { choosePoolPackage } from '../store/actions/checkoutActions'
 export default function ChoosePoolPackage() {
     const dispatch = useDispatch()
     const poolPackages = useSelector(state => state.poolPackages)
+    const userPackage = useSelector(state => state.userPackage)
 
     const getPackageByType = (type) => {
         return poolPackages.data.sort(function (a, b) {
@@ -29,7 +30,7 @@ export default function ChoosePoolPackage() {
                     </div>
                 </div>
                 <div className="price-card-action">
-                    <Button icon="shop" content="Seç" fluid className="w-100" color="vk" size="huge" onClick={() => handlePackageClick(poolPackage)}/>
+                    <Button icon="shop" disabled={!!userPackage.data} content="Seç" fluid className="w-100" color="vk" size="huge" onClick={() => handlePackageClick(poolPackage)}/>
                 </div>
             </div>
         )

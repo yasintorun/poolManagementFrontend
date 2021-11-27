@@ -9,3 +9,16 @@ body {
     background-color: var(--dashboard-main-bg);
     color: var(--dashboard-main-color);
 }
+
+.profile-btn {
+    border-radius: 20px !important;
+    cursor: pointer;
+}
+.navbar-action .badge {
+    font-size: 14px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif !important;
+    font-weight: 400;
+}
+.navbar-action {
+    cursor: pointer;
+}

@@ -1,3 +1,4 @@
+import { objectMethod } from '@babel/types'
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { Route, Switch, useHistory } from 'react-router'

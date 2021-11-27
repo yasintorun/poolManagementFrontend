@@ -7,3 +7,104 @@
     background-color: var(--dashboard-main-bg)!important;
     color: #fff!important;
 }
+
+body {
+    font-family: 'Outfit', sans-serif !important;
+}
+
+.card {
+    margin-bottom: 1.875rem;
+    background-color: #fff;
+    transition: all .5s ease-in-out;
+    position: relative;
+    border: 0rem solid transparent;
+    border-radius: 1.25rem;
+    box-shadow: 0rem 0.3125rem 0.3125rem 0rem rgb(82 63 105 / 5%);
+    height: calc(100% - 30px);
+}
+.card-header:first-child {
+    border-radius: calc(0.75rem - 1px) calc(0.75rem - 1px) 0 0;
+}
+
+.card-header {
+    border-color: #f5f5f5;
+    position: relative;
+    background: transparent;
+    padding: 1.5rem 1.875rem 1.25rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.card-header .card-title {
+    margin-bottom: 0rem;
+}
+
+.card-title {
+    font-weight: 500;
+    color: #000;
+    text-transform: capitalize;
+}
+.card-body {
+    padding: 1.875rem;
+}
+.table {
+    --bs-table-bg: transparent;
+    --bs-table-striped-color: #393939;
+    --bs-table-striped-bg: rgba(0, 0, 0, 0.05);
+    --bs-table-active-color: #393939;
+    --bs-table-active-bg: rgba(0, 0, 0, 0.1);
+    --bs-table-hover-color: #393939;
+    --bs-table-hover-bg: rgba(0, 0, 0, 0.075);
+    width: 100%;
+    margin-bottom: 1rem;
+    color: #393939;
+    vertical-align: top;
+    border-color: #EEEEEE;
+}
+.table > thead {
+    vertical-align: bottom;
+}
+
+thead, tbody, tfoot, tr, td, th {
+    border-color: inherit;
+    border-style: solid;
+    border-width: 0;
+}
+.table thead th {
+    border-bottom: 0.0625rem solid #EEEEEE !important;
+    text-transform: capitalize;
+    font-size: 1.4rem;
+    white-space: nowrap;
+    font-weight: 900;
+    letter-spacing: 0.0313rem;
+    border-color: #f5f5f5 !important;
+}
+.table tbody tr td {
+    vertical-align: middle;
+    border-color: #f5f5f5;
+}
+
+.table th, .table td {
+    border-color: #f5f5f5 !important;
+    padding: 1.5rem 0.625rem;
+}
+
+.table tr td {
+    font-weight: 100 !important;
+}
+
+.table tbody {
+    border-color: #f5f5f5 !important;
+}
+
+.table-orange {
+    --bs-table-bg: #feebe6;
+    --bs-table-striped-bg: #feebe6;
+    --bs-table-striped-color: #000;
+    --bs-table-active-bg: #feebe6;
+    --bs-table-active-color: #000;
+    --bs-table-hover-bg: #feebe6;
+    --bs-table-hover-color: #000;
+    color: #000;
+    border-color: #feebe6;
+}

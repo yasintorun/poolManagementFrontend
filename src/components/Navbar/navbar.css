@@ -1,23 +1,33 @@
 
 .dashboard_navbar {
-    height: 50px;
-    background-color: antiquewhite;
+    height: 80px;
+    background-color: var(--navbar-bg);
     width: 100%;
     position: fixed;
     top: 0;
-    background-color: var(--dashboard-bg);
     z-index: 999;
+    align-items: center;
 }
 
 .dashboard_navbar_main {
-   height: 50px;
+   height: 80px;
    display: flex;
+   padding: 0px 10px;
    justify-content: space-between;
    align-items: center; 
 }
 
 .brand_header {
     font-size: 28px;
-    font-weight: 800;
+    font-weight: 900 !important;
+    text-shadow: 0px 0px 17px rgba(244, 146, 80, 1);
     color: var(--brand-color);
+}
+
+.top-items {
+    margin-right: 0px;
+}
+
+.top-items > * {
+    margin: auto 30px;
 }

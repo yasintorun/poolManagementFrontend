@@ -1,5 +1,6 @@
 import './assets/styles/App.css'
 import 'bootstrap/dist/css/bootstrap.min.css';
+import 'bootstrap-icons/font/bootstrap-icons.css';
 import 'semantic-ui-css/semantic.min.css'
 import './assets/styles/custom-theme.css'
 import 'react-datetime-picker/dist/DateTimePicker.css'
