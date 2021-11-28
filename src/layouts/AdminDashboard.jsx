@@ -41,7 +41,7 @@ export default function AdminDashboard() {
                         </g>
                     </svg>
                     <span className="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
-                        10
+                        27
                         <span className="visually-hidden">unread messages</span>
                     </span>
                 </div>
@@ -52,7 +52,7 @@ export default function AdminDashboard() {
                         </g>
                     </svg>
                     <span className="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
-                        10
+                        8
                         <span className="visually-hidden">unread messages</span>
                     </span>
                 </div>
@@ -63,7 +63,7 @@ export default function AdminDashboard() {
                         </g>
                     </svg>
                     <span className="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
-                        10
+                        3
                         <span className="visually-hidden">unread messages</span>
                     </span>
                 </div>
@@ -79,7 +79,7 @@ export default function AdminDashboard() {
             </Navbar>
 
             <SideBar>
-                <Button className="p-4 sidebar-default-btn" as={NavLink} to={url + "/home"}>
+                <Button className="p-4 sidebar-default-btn " as={NavLink} to={url + "/home"}>
                     <Icon name="home" />
                     Dashboard
                 </Button>
@@ -90,10 +90,6 @@ export default function AdminDashboard() {
                 <Button className="p-4 sidebar-default-btn" as={NavLink} to={url + "/pool-list"}>
                     <Icon name="map " />
                     Havuzlar
-                </Button>
-                <Button className="p-4 sidebar-default-btn" as={NavLink} to={url + "/pool-lane-list"}>
-                    <Icon name="road " />
-                    Havuz Şeritleri
                 </Button>
                 <Button className="p-4 sidebar-default-btn" as={NavLink} to={url + "/pool-package-list"}>
                     <Icon name="list " />
@@ -107,16 +103,12 @@ export default function AdminDashboard() {
                     <Icon name="plus" />
                     Randevu Oluştur
                 </Button>
-                <Button className="p-4 sidebar-default-btn" as={NavLink} to={url + "/role-list"}>
-                    <Icon name="user secret " />
-                    Roller
-                </Button>
 
             </SideBar>
 
             <main className="dashboard_main">
-                <div className="w-75 m-auto">
-                    <YTSwitch>
+                <YTSwitch>
+                    <div className="w-85 m-auto">
                         <Route path={url + "/pool-list"} component={PoolList} exact />
                         <Route path={url + "/pool-lane-list"} component={PoolLaneList} exact />
                         <Route path={url + "/role-list"} component={RoleList} exact />
@@ -126,8 +118,8 @@ export default function AdminDashboard() {
                         <Route path={url + "/pool-package-list"} component={PoolPackageList} exact />
                         <Route path={url + "/home"} exact />
                         <Route path={url} exact />
-                    </YTSwitch>
-                </div>
+                    </div>
+                </YTSwitch>
             </main>
         </div>
     )

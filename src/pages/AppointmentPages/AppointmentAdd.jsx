@@ -34,14 +34,14 @@ export default function AppointmentAdd() {
     const addAppointmentSubmit = values => {
         let val = {
             ...values,
-            startTime: values.hour+":"+values.minute,
-            endTime: checkTime(parseInt(values.hour)+values.time)+":"+values.minute,
+            startTime: values.hour + ":" + values.minute,
+            endTime: checkTime(parseInt(values.hour) + values.time) + ":" + values.minute,
         }
         //console.log(val)
         dispatch(addAppointment(val))
     }
 
-    function checkTime(time){if(time >=24) { time -= 24;}if(time<10) {time="0"+time}return time} //Zaman kontrol.
+    function checkTime(time) { if (time >= 24) { time -= 24; } if (time < 10) { time = "0" + time } return time } //Zaman kontrol.
 
     const hourOptions = ['07', '08', '09', '10', '11', '12', '13', '14', '15', '16', '17', '18', '19', '20', '21', '22']
     const minuteOptions = ['00', '15', '30', '45']
@@ -50,6 +50,59 @@ export default function AppointmentAdd() {
         <div className="w-50 m-auto">
             <PageHeader text="Randevu Oluştur" />
             <div>
+                <div>
+                    <div className="card p-5">
+                        <div className="card-header ">
+                            <h3>Yeni Randevu Oluşturma</h3>
+                        </div>
+                        <div className="card-body text-dark ">
+                            <Formik
+                                initialValues={initialValues}
+                                validationSchema={schema}
+                                onSubmit={(values) => {
+                                    addAppointmentSubmit(values)
+                                }}
+                            >
+                                {props => (
+                                    <Form className="ui form form-large form-display-1">
+                                        <Form.Field>
+                                            <label>Havuz</label>
+                                            <PoolDropdown name="pool.poolId" />
+                                        </Form.Field>
+                                        <Form.Field>
+
+                                            <label>Havuz Şeridi</label>
+                                            <LaneDropdown name="lane.laneId" />
+                                        </Form.Field>
+                                        <Form.Field>
+                                            <label className="">Tarih</label>
+                                            <YTInput min={Formatter.getDate()} name="date" type="date" />
+                                        </Form.Field>
+                                        <Form.Group>
+                                            <Form.Field>
+                                                <label className="">Başlama Saati</label>
+                                                <YTDropdown placeholder="Saat seçiniz" name="hour" options={hourOptions.map((k) => { return { key: k, value: k, text: k } })} />
+                                            </Form.Field>
+                                            <Form.Field>
+                                                <label className="">Dakika</label>
+                                                <YTDropdown placeholder="Dakika seçiniz" name="minute" options={minuteOptions.map((k) => { return { key: k, value: k, text: k } })} />
+                                            </Form.Field>
+                                        </Form.Group>
+                                        <Form.Group>
+                                            <Form.Field name="time">
+                                                <label className="">Seans Saati?</label>
+                                                <YTDropdown placeholder="Saat seçiniz" name="time" options={Array.from({ length: 3 }, (v, k) => k + 1).map((k) => { return { key: k, value: k, text: k } })} />
+                                            </Form.Field>
+                                        </Form.Group>
+                                        <Button color='green' fluid onClick={() => props.submitForm()} type="submit" icon="checkmark" content="Ekle" />
+                                    </Form>
+                                )}
+                            </Formik>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {/* <div>
                 <Formik
                     initialValues={initialValues}
                     validationSchema={schema}
@@ -87,7 +140,7 @@ export default function AppointmentAdd() {
                         </Form>
                     )}
                 </Formik>
-            </div>
+            </div> */}
         </div>
     )
 }

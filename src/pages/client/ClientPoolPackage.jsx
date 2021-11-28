@@ -3,16 +3,32 @@ import { useSelector } from 'react-redux'
 import { Button, Icon } from 'semantic-ui-react'
 import ChangePackageButton from '../../components/ChangePackageButton'
 import PageHeader from '../../components/Headers/PageHeader'
+import PoolPackage from '../../components/PoolPackage'
 
 export default function ClientPoolPackage() {
-    const userPackage = useSelector(state => state.userPackage)
-    useEffect(() => {
-        console.log(userPackage)
-    }, [])
+    const { data: userPack } = useSelector(state => state.userPackage)
+
     return (
         <div>
             <PageHeader text="Mevcut Paketim" />
-            {userPackage.data != null ? (
+            <div class="d-flex justify-content-center">
+                {!!userPack
+                    ? <PoolPackage poolPackage={userPack.poolPackage} cardStyle={{ height: 550 }} >
+                        <p><strong>Başlama Tarihi: </strong>21 Temmuz 2021</p>
+                        <p> <strong>Bitiş Tarihi: </strong>21 Ekim 2021</p>
+                    </PoolPackage>
+                    : <div>
+                        <div class="alert alert-danger solid" role="alert">
+                            Paketin bulunmuyor.
+                        </div>
+                    </div>
+                }
+            </div>
+            <div>
+
+            </div>
+
+            {/* {userPackage.data != null ? (
                 <div className="d-flex justify-content-center">
                     <div className="package text-center pb-5">
                         <PageHeader text={userPackage.data.poolPackage.packagePeriod / 30 + " Ay"} />
@@ -45,19 +61,19 @@ export default function ClientPoolPackage() {
                         Paketin bulunmuyor.
                     </div>
                 </div>
-            )}
+            )} */}
 
             <div className=" mt-5">
-            <div class="alert alert-success" role="alert">
-                    <Icon name="check"/>
+                <div class="alert alert-success solid" role="alert">
+                    <Icon name="check" />
                     Paketinizi tüm havuzumuzda kullanabilirsiniz. Randevu alırken istediğiniz bir havuzu seçebilirsiniz.
                 </div>
-                <div class="alert alert-info" role="alert">
-                    <Icon name="warning"/>
+                <div class="alert alert-info solid" role="alert">
+                    <Icon name="warning" />
                     Mevcut paketi sadece yönetici değiştirebilir. Eğer paketinizi değiştirmek isterseniz havuz yöneticisi ile görüşebilirsiniz.
                 </div>
-                <div class="alert alert-warning" role="alert">
-                    <Icon name="warning"/>
+                <div class="alert alert-warning solid" role="alert">
+                    <Icon name="warning" />
                     Satın almış olduğunuz paketinizi bir haftaya kadar iptal edebilirsiniz. İptal ücreti paket fiyatının %10 kadarıdır.
                 </div>
             </div>

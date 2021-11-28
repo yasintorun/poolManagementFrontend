@@ -1,6 +1,6 @@
 import { Formik, useField } from 'formik'
 import React, { useRef } from 'react'
-import { Button, Form, Icon } from 'semantic-ui-react'
+import { Button, Form, Icon, Message } from 'semantic-ui-react'
 
 import * as Yup from "yup";
 import AddModal from '../../components/Modals/AddModal';
@@ -44,6 +44,7 @@ export default function () {
                             <label>Havuz Adresi</label>
                             <YTInput name="poolAddress" placeholder="Havuz adresini giriniz" />
                             <Button color='green' onClick={()=>props.submitForm()} type="submit" icon="checkmark" content="Ekle" />
+                            <Message color="yellow">Havuz fotoğrafları havuz detay sayfasından eklenmektedir.</Message>
                         </Form>
                     )}
                 </Formik>

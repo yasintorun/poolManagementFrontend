@@ -7,13 +7,13 @@ export default function ClientAppointmentList() {
             <PageHeader text="Randevularım" />
             <div class="card">
                 <div class="card-header">
-                    <h2 class="card-title">Oluşturmuş Olduğun Tüm Randevu Listesi</h2>
+                    <h2>Oluşturmuş Olduğun Tüm Randevu Listesi</h2>
                 </div>
                 <div class="card-body">
                     <div class="table-responsive">
-                        <table class="table table-responsive-md">
+                        <table class="table table-responsive-md table-large table-hover">
                             <thead>
-                                <tr>
+                                <tr className="table-orange">
                                     <th className="w-80"> # </th>
                                     <th> Havuz Adı </th>
                                     <th> Şerit Adı </th>
@@ -22,7 +22,39 @@ export default function ClientAppointmentList() {
                                     <th> Tarih</th>
                                 </tr>
                             </thead>
-                            <tbody>
+                            <tbody className="">
+                                <tr>
+                                    <td> 1 </td>
+                                    <td>Milli Olimpiyat Yüzme Havuzu</td>
+                                    <td>Şerit A</td>
+                                    <td>13:45</td>
+                                    <td>15:45</td>
+                                    <td>1 Haziran 2021 </td>
+                                </tr>
+                                <tr>
+                                    <td> 1 </td>
+                                    <td>Milli Olimpiyat Yüzme Havuzu</td>
+                                    <td>Şerit A</td>
+                                    <td>13:45</td>
+                                    <td>15:45</td>
+                                    <td>1 Haziran 2021 </td>
+                                </tr>
+                                <tr>
+                                    <td> 1 </td>
+                                    <td>Milli Olimpiyat Yüzme Havuzu</td>
+                                    <td>Şerit A</td>
+                                    <td>13:45</td>
+                                    <td>15:45</td>
+                                    <td>1 Haziran 2021 </td>
+                                </tr>
+                                <tr>
+                                    <td> 1 </td>
+                                    <td>Milli Olimpiyat Yüzme Havuzu</td>
+                                    <td>Şerit A</td>
+                                    <td>13:45</td>
+                                    <td>15:45</td>
+                                    <td>1 Haziran 2021 </td>
+                                </tr>
                                 <tr>
                                     <td> 1 </td>
                                     <td>Milli Olimpiyat Yüzme Havuzu</td>

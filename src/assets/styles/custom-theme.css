@@ -108,3 +108,116 @@ thead, tbody, tfoot, tr, td, th {
     color: #000;
     border-color: #feebe6;
 }
+
+.table-large tbody td {
+    padding: 2.5rem 0.625rem !important;
+}
+
+.bg-orange {
+    background: var(--primary-color);
+    color: white;
+}
+.bg-purple {
+    background: rgb(87, 70, 161);
+    color: white;
+}
+.bg-green {
+    background: rgb(77, 185, 80);
+    color: white;
+}
+
+.pool-cards {
+    padding-bottom: 40px !important;
+}
+
+.pool-cards > .card {
+    width: 75%;
+    margin: 40px auto;
+}
+
+.pool-cards .slider img {
+    width: inherit;
+    height: 500px;
+}
+
+.wrapper {
+    width: 100%;
+    margin: auto;
+}
+
+.flexbox {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.flexbox-item {
+    flex: 0 1 calc(30% - 8px);
+    height: 500px;
+    max-width: 30%;
+    margin: 1.875rem;
+    border-radius: 20px;
+}
+.flexbox-item img {
+    width: 225px;
+    height: 225px;
+}
+.w-85 {
+    width: 85%;
+}
+
+
+
+.form-display-1 > *{
+    font-size: 1.2rem;
+}
+
+.ui.form.form-large > .field,
+.ui.form.form-large > .fields   {
+    padding:15px 0px;
+}
+
+.alert.alert-success.solid {
+    background: #68e365;
+    color: #fff;
+    border-color: #68e365;
+}
+.alert.alert-primary.solid {
+    background: var(--primary-color);
+    color: #fff;
+    border-color: var(--primary-color);
+}
+.alert.alert-secondary.solid {
+    background: #145650;
+    color: #fff;
+    border-color: #145650; }
+  
+.alert.alert-warning.solid {
+    background: #ffa755;
+    color: #fff;
+    border-color: #ffa755; }
+  
+  .alert.alert-danger.solid {
+    background: #f72b50;
+    color: #fff;
+    border-color: #f72b50; }
+  
+  .alert.alert-info.solid {
+    background: #D653C1;
+    color: #fff;
+    border-color: #D653C1; }
+  
+  .alert.alert-dark.solid {
+    background: #6e6e6e;
+    color: #fff;
+    border-color: #6e6e6e; }
+  
+  .alert.alert-light.solid {
+    background: #c8c8c8;
+    color: #6e6e6e;
+    border-color: #c8c8c8; }
+  
+
+.table tbody tr td {
+    font-weight: 500 !important;
+    font-family: 'Poppins', sans-serif !important;
+}

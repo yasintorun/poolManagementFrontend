@@ -121,7 +121,7 @@ export default function ChoosePoolPackage() {
     ]
 
     return (
-        <div className="text-white ">
+        <div className=" ">
             <PageHeader text="Paket Seç" />
             <Tab loading menu={{ size: "massive", widths: 3, color: "teal", pointing: true, inverted: true }} panes={panes} />
         </div>
