@@ -15,7 +15,7 @@ export default function PoolDropdown({ ...props }) {
                 placeholder='Havuz seçiniz'
                 {...props}
                 options={pools?.data?.map((p, index) => {
-                    return { text: p.poolName, key: index, value: p.poolId }
+                    return { text: p.pool.poolName, key: index, value: p.pool.poolId }
                 })}
                 // value={value}
             />

@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { Button, Popup, Table } from 'semantic-ui-react'
 import PageHeader from '../../components/Headers/PageHeader'
 import PoolPackage from '../../components/PoolPackage'
+import AuthService from '../../services/authService'
 import { deletePoolPackage } from '../../store/actions/poolPackageActions'
 import { DeleteAlert } from '../../utilities/AlertMessages/YTAlerts'
 import PoolPackageAdd from './PoolPackageAdd'
@@ -17,7 +18,6 @@ export default function PoolPackageList() {
     }
 
     useEffect(() => {
-        console.log(auth)
     }, [])
 
     //Admin actions

@@ -18,10 +18,11 @@ import { types } from '../services/localStoregeService'
 import { useDispatch } from 'react-redux'
 import { logout } from '../store/actions/authActions'
 import PoolPackageList from '../pages/PoolPackagePages/PoolPackageList'
+import PoolDetail from '../pages/PoolPages/PoolDetail'
 
 export default function AdminDashboard() {
     const [isProfileOpen, setIsProfileOpen] = useState(false)
-    const url = "/dashboard/admin"
+    const url = "/dashboard"
     const history = useHistory()
 
     const dispatch = useDispatch()
@@ -110,6 +111,7 @@ export default function AdminDashboard() {
                 <YTSwitch>
                     <div className="w-85 m-auto">
                         <Route path={url + "/pool-list"} component={PoolList} exact />
+                        <Route path={url + "/pool-list/detail/:id"} component={PoolDetail} exact />
                         <Route path={url + "/pool-lane-list"} component={PoolLaneList} exact />
                         <Route path={url + "/role-list"} component={RoleList} exact />
                         <Route path={url + "/user-list"} component={UserList} exact />

@@ -221,3 +221,8 @@ thead, tbody, tfoot, tr, td, th {
     font-weight: 500 !important;
     font-family: 'Poppins', sans-serif !important;
 }
+
+.ff-pap {
+    font-family: 'Poppins', sans-serif !important;
+    line-height: 2.25rem;
+}

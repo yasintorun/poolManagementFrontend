@@ -10,11 +10,13 @@ import ClientHomePage from '../pages/client/ClientHomePage'
 import ClientPoolPackage from '../pages/client/ClientPoolPackage'
 import Payment from '../pages/Payment'
 import PoolPackageList from '../pages/PoolPackagePages/PoolPackageList'
+import PoolDetail from '../pages/PoolPages/PoolDetail'
+import PoolList from '../pages/PoolPages/PoolList'
 import { logout } from '../store/actions/authActions'
 import YTSwitch from '../utilities/customs/YTSwitch'
 export default function ClientDashboard() {
     const [isProfileOpen, setIsProfileOpen] = useState(false)
-    const url = "/dashboard/client"
+    const url = "/dashboard"
     const dispatch = useDispatch()
     const logoutClick = () => {
         dispatch(logout())
@@ -65,6 +67,10 @@ export default function ClientDashboard() {
                     <Icon name="home " />
                     Randevularım
                 </Button>
+                <Button className="p-4 sidebar-default-btn" as={NavLink} to={url + "/pool-list"}>
+                    <Icon name="map " />
+                    Havuzlar
+                </Button>
                 <Button className="p-4 sidebar-default-btn" as={NavLink} to={url + "/pool-package-list"}>
                     <Icon name="list " />
                     Havuz Paketleri
@@ -82,6 +88,8 @@ export default function ClientDashboard() {
             <main className="dashboard_main">
                 <YTSwitch>
                     <div className="w-85 m-auto">
+                        <Route path={url + "/pool-list"} component={PoolList} exact />
+                        <Route path={url + "/pool-list/detail/:id"} component={PoolDetail} exact />
                         <Route path={url + "/pool-package-list"} exact component={PoolPackageList} />
                         <Route path={url + "/my-package"} exact component={ClientPoolPackage} />
                         <Route path={url + "/my-appointments"} exact component={ClientAppointmentList} />

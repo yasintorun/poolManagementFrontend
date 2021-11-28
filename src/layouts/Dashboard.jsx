@@ -34,15 +34,15 @@ export default function Dashboard() {
             case 2: //admin
                 return (
                     <>
-                        <ProtectedRoute path="/dashboard/admin*" exact component={AdminDashboard} />
-                        <PathRedirect path="/dashboard" to="/dashboard/admin"/>
+                        <ProtectedRoute path="/dashboard*" exact component={AdminDashboard} />
+                        <PathRedirect path="/dashboard" to="/dashboard/home"/>
                     </>
                 )
             case 4: //kullanıcı
                 return (
                     <>
-                        <ProtectedRoute path="/dashboard/client*" exact component={ClientDashboard} />
-                        <PathRedirect path="/dashboard" to="/dashboard/client" />
+                        <ProtectedRoute path="/dashboard*" exact component={ClientDashboard} />
+                        <PathRedirect path="/dashboard" to="/dashboard/home" />
                     </>
                 )
             default: 

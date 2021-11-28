@@ -10,13 +10,14 @@ import "react-responsive-carousel/lib/styles/carousel.min.css";
 import PoolEdit from './PoolEdit'
 import { Carousel } from 'react-responsive-carousel'
 import { NavLink } from 'react-router-dom'
+import AuthService from '../../services/authService'
+import PoolCarousel from '../../components/PoolCarousel'
 export default function PoolList() {
     const pools = useSelector(state => state.pools);
 
     const dispatch = useDispatch()
 
     const poolDelete = (poolId) => {
-        console.log(poolId)
         DeleteAlert("Havuz", "Bu işlemi geri alamazsın", () => dispatch(deletePool(poolId)))
     }
 
@@ -24,65 +25,24 @@ export default function PoolList() {
         <div >
             <div>
                 <PageHeader text="Havuzlar" />
-                <div className="w-75 m-auto d-flex justify-content-end">
-                    <PoolAdd />
-                </div>
+                {AuthService.isAdmin() &&
+                    <div className="w-75 m-auto d-flex justify-content-end">
+                        <PoolAdd />
+                    </div>
+                }
                 <div className="pool-cards">
-                    <div className="card  text-center">
-                        <div className="card-header d-block">
-                            <h2 className="">
-                                <NavLink to="" >    Ankara Üniversitesi Olimpik Yüzme Havuzu</NavLink>
-                            </h2>
+                    {pools?.data?.map(p => (
+                        <div className="card  text-center">
+                            <div className="card-header d-block">
+                                <h2 className="">
+                                    <NavLink to={`/dashboard/pool-list/detail/${p?.pool?.poolName?.replaceAll(' ', "")}-${p.pool.poolId}`} >{p.pool.poolName}</NavLink>
+                                </h2>
+                            </div>
+                            <div className="card-body">
+                                <PoolCarousel poolImages={p.poolImages}/>
+                            </div>
                         </div>
-                        <div className="card-body">
-                            <Carousel swipeable infiniteLoop>
-                                <div>
-                                    <img src="https://lh3.googleusercontent.com/proxy/w5dYeTWeYqmOp8Iy2wbeujRSOHjuYxA4ZK_LFCIvbDKxjGXeBX1IfV7t6xxtbURrcNQreDd8MtWLbpK0ZOqrHtL6f6ls_SbeeMAMY66J_I1HIqXjn257RQLalwrT" />
-                                </div>
-                                <div>
-                                    <img src="https://lh3.googleusercontent.com/proxy/IPuvC-eneGuRlsY5RYiiYxvykl9UkMR2KcJlWlgnjLx3ZVgMC0Zey9vEbGmLgMA9qxXW_PQkv0fCxPOWaU9Nm-rB4LeQQfQY7U0QVKVBHDPBxsZlQWmwETZW42_5kKiBUQ" />
-                                </div>
-                                <div>
-                                    <img src="https://lh3.googleusercontent.com/proxy/gy7mb1Ee9y0HPYOWb3JDY6o13eFuTvms9iZf5EKR0r6oeC36JHOkb-VIeUF1gz_QR6yLPHtpKV1M5M93iNntBNSCgQvm-KpTVRtrGNlASucUEeC-acBFNIz5bIb9EXIYSbGigMhN9SyrmjsCDwo" />
-                                </div>
-                            </Carousel>
-                        </div>
-                    </div>
-
-                    <div className="card  text-center">
-                        <div className="card-header d-block">
-                            <h2 className="">
-                                <NavLink to="" >ODTÜ Yüzme Havuzu</NavLink>
-                            </h2>
-
-                        </div>
-                        <div className="card-body">
-                            <Carousel swipeable infiniteLoop>
-                                <div>
-                                    <img src="https://gezginsitesi.com/wp-content/uploads/2019/09/cropped-odtu-kapal%C4%B1-y%C3%BCzme-havuzu.jpg" />
-                                </div>
-                                <div>
-                                    <img src="https://hm.metu.edu.tr/sites/hm.metu.edu.tr/files/slider/image/dsc_0003_0.jpg" />
-                                </div>
-                            </Carousel>
-                        </div>
-                    </div>
-
-                    <div className="card  text-center">
-                        <div className="card-header d-block">
-                            <h2 className="">
-                                <NavLink to="" >Ankara Gölbaşı Yüzme Havuzu</NavLink>
-                            </h2>
-
-                        </div>
-                        <div className="card-body">
-                            <Carousel swipeable infiniteLoop>
-                                <div>
-                                    <img src="https://firsat.me/img/big1024/18.06.25_23.54.03_1080x754_1.jpg" />
-                                </div>
-                            </Carousel>
-                        </div>
-                    </div>
+                    ))}
                 </div>
 
 
