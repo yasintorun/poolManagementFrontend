@@ -13,7 +13,6 @@ export const getAllPoolLanes = async (dispatch) => {
     dispatch({type: poolLaneTypes.GET_POOL_LANE_START})
     try {
         const response = await api().get(api_url + "/getallpoollanes")
-        console.log(response)
         dispatch({type: poolLaneTypes.GET_POOL_LANE_SUCCESS, payload: response.data.data})
     } catch {
         dispatch({type: poolLaneTypes.GET_POOL_LANE_ERROR})

@@ -12,6 +12,7 @@ const api_url = "/pools"
 
 export const getAllPools = async (dispatch) => {
     dispatch({type: poolTypes.GET_POOL_START})
+    
     try {
         const response = await api().get(api_url + "/getallpools")
         dispatch({type: poolTypes.GET_POOL_SUCCESS, payload: response.data.data})
@@ -31,5 +32,3 @@ export const editPools = (pool) => async (dispatch) => {
 export const deletePool = (poolId) => async (dispatch) => {
     return CallBack(api().delete(api_url +"/deletepool", {data: {poolId: poolId}}), dispatch, getAllPools)
 }
-
-

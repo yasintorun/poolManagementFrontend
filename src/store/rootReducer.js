@@ -5,6 +5,7 @@ import { CookieTypes } from "../utilities/cookieTypes";
 import appointmentReducer from "./reducers/appointmentReducer";
 import authReducer from "./reducers/authReducer";
 import checkoutReducer from "./reducers/checkoutActions";
+import imageReducer from "./reducers/imageReducers";
 import poolLaneReducer from "./reducers/poolLaneReducer";
 import poolPackageReducer from "./reducers/poolPackageReducer";
 import poolReducer from "./reducers/poolReducer";
@@ -25,6 +26,7 @@ const rootReducer = combineReducers({
     poolPackages: poolPackageReducer,
     checkout: checkoutReducer,
     userPackage: userPoolPackageReducer,
+    images: imageReducer,
 })
 
 export default rootReducer

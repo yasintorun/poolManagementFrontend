@@ -4,6 +4,7 @@ import { Carousel } from 'react-responsive-carousel'
 import { useParams } from 'react-router'
 import PageHeader from '../../components/Headers/PageHeader'
 import PoolCarousel from '../../components/PoolCarousel'
+import PoolImageAdd from './PoolImageAdd'
 
 export default function PoolDetail() {
     let params = useParams()
@@ -28,6 +29,9 @@ export default function PoolDetail() {
             <div className="p-5">
                 <div className="card p-5">
                     <div className="card-body">
+                        <div className="py-4">
+                            <PoolImageAdd />
+                        </div>
                         <PoolCarousel poolImages={pool?.poolImages}/>
                         <div className="mt-4 pt-4">
                             <div>

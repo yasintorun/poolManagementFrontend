@@ -2,7 +2,6 @@ import React from 'react'
 import { Carousel } from 'react-responsive-carousel'
 
 export default function PoolCarousel({ poolImages }) {
-    console.log(poolImages)
     return (
         <Carousel swipeable infiniteLoop>
             {poolImages?.length != 0 ? poolImages?.map(pi => (

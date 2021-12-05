@@ -1,9 +1,17 @@
 import React from 'react'
 import { Button, Header, Icon, Modal } from 'semantic-ui-react'
 
-export default function AddModal({header, icon, trigger, children}) {
+export default function AddModal({ header, icon, trigger, children, onClose }) {
 
-  const [open, setOpen] = React.useState(false)
+    const [open, setOpen] = React.useState(false)
+
+    const onClosed = () => {
+        setOpen(false)
+        if(onClose) {
+            onClose()
+        }
+    }
+
     return (
         <div>
             <Modal
@@ -19,7 +27,7 @@ export default function AddModal({header, icon, trigger, children}) {
                     {children}
                 </Modal.Content>
                 <Modal.Actions>
-                    <Button color='red' onClick={() => setOpen(false)}>
+                    <Button color='red' onClick={() => onClosed()}>
                         <Icon name='remove' /> Kapat
                     </Button>
                 </Modal.Actions>

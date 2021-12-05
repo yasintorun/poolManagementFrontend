@@ -226,3 +226,8 @@ thead, tbody, tfoot, tr, td, th {
     font-family: 'Poppins', sans-serif !important;
     line-height: 2.25rem;
 }
+
+.vertical-scroll {
+    overflow-x: scroll;
+    width: 100%;
+}
