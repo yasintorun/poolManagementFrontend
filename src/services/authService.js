@@ -13,7 +13,8 @@ export default class AuthService{
 
     static isAdmin() {
         let auth = JSON.parse(Cookies.get(CookieTypes.AUTH))
-        return auth?.role?.roleId == 2
+        console.log(auth)
+        return auth?.role?.roleId == 4
     }
     
     static isClient() {

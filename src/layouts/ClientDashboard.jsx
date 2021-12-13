@@ -75,14 +75,14 @@ export default function ClientDashboard() {
                     <Icon name="list " />
                     Havuz Paketleri
                 </Button>
-                <Button className="p-4 sidebar-default-btn" as={NavLink} to={url + "/choose-package"}>
+                {/* <Button className="p-4 sidebar-default-btn" as={NavLink} to={url + "/choose-package"}>
                     <Icon name="list " />
                     Havuz Paketi Seç
                 </Button>
                 <Button className="p-4 sidebar-default-btn" as={NavLink} to={url + "/payment"}>
                     <Icon name="list " />
                     Ödeme Sayfası
-                </Button>
+                </Button> */}
             </SideBar>
 
             <main className="dashboard_main">
@@ -93,8 +93,8 @@ export default function ClientDashboard() {
                         <Route path={url + "/pool-package-list"} exact component={PoolPackageList} />
                         <Route path={url + "/my-package"} exact component={ClientPoolPackage} />
                         <Route path={url + "/my-appointments"} exact component={ClientAppointmentList} />
-                        <Route path={url + "/choose-package"} exact component={ChoosePoolPackage} />
-                        <Route path={url + "/payment"} exact component={Payment} />
+                        {/* <Route path={url + "/choose-package"} exact component={ChoosePoolPackage} />
+                        <Route path={url + "/payment"} exact component={Payment} /> */}
                         <Route exact path={url + "/home"} component={ClientHomePage} />
                         <Route exact path={url} component={ClientHomePage} />
                     </div>

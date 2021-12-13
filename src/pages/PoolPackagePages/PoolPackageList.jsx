@@ -6,6 +6,7 @@ import PoolPackage from '../../components/PoolPackage'
 import AuthService from '../../services/authService'
 import { deletePoolPackage } from '../../store/actions/poolPackageActions'
 import { DeleteAlert } from '../../utilities/AlertMessages/YTAlerts'
+import RoleBasedAction from '../../utilities/RoleBasedAction'
 import PoolPackageAdd from './PoolPackageAdd'
 import PoolPackageEdit from './PoolPackageEdit'
 
@@ -21,24 +22,25 @@ export default function PoolPackageList() {
     }, [])
 
     //Admin actions
-    const AdminActions = () => {
+    const AdminActions = React.useMemo(() => {
         return (
             <div>
                 <Button positive>Paketi Düzenle</Button>
             </div>
         )
-    }
+    })
 
     //Client actions
-    const ClientActions = () => {
+    const ClientActions = React.useMemo(() => {
         return (
             <div>
                 <Button positive>Paketi Satın Al</Button>
             </div>
         )
-    }
+    })
 
     const Actions = () => {
+        return 
         switch (auth?.data?.role?.roleId) {
             case 2:
                 return (
@@ -71,7 +73,11 @@ export default function PoolPackageList() {
                     <div className="flexbox">
                         {poolPackages?.data?.map(pack => (
                             <PoolPackage poolPackage={pack}>
-                                <Actions />
+                                <RoleBasedAction 
+                                    admin={AdminActions}
+                                    client={ClientActions}
+                                    notAuthorize={<>Paketi satın almak için üye ol</>}
+                                />
                             </PoolPackage>
                         ))}
                     </div>
