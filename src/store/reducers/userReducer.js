@@ -15,6 +15,9 @@ export default function userReducer(state = defaultState, {type, payload}) {
             return {...state, loading:false, data:payload}
         case userTypes.GET_USER_ERROR:
             return {...state, loading:false, error:"Error fetching get users"}
+
+        case userTypes.GET_USER:
+            return {...state, data:payload}
         default:
             return {...state, loading:false, error:""}
     }

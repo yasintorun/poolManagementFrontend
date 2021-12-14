@@ -1,7 +1,9 @@
 import Cookies from "js-cookie"
 import api from "../../services/api"
+import AuthService from "../../services/authService"
 import { types } from "../../services/localStoregeService"
 import { CookieTypes } from "../../utilities/cookieTypes"
+import { getUser } from "./userActions"
 
 export const authTypes = {
     LOGIN_START: "LOGIN_START",
@@ -19,6 +21,11 @@ export const login = (value) => async (dispatch) => {
         dispatch({type: authTypes.LOGIN_SUCCESS, payload: response.data.data})
         Cookies.set(CookieTypes.AUTH, JSON.stringify(response.data.data))
         localStorage.setItem(types.USER, JSON.stringify(response.data.data))
+        
+        if(AuthService.isClient()) {
+             dispatch(getUser(response.data.data.accountId))   
+        }
+
     }catch{
         dispatch({type: authTypes.LOGIN_ERROR})
     }
