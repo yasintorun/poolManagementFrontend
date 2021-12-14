@@ -14,7 +14,7 @@ export default class AuthService{
     static isAdmin() {
         let auth = JSON.parse(Cookies.get(CookieTypes.AUTH))
         console.log(auth)
-        return auth?.role?.roleId == 4
+        return auth?.role?.roleId == 2
     }
     
     static isClient() {
