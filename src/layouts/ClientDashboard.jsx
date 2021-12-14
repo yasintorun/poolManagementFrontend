@@ -93,8 +93,8 @@ export default function ClientDashboard() {
                         <Route path={url + "/pool-package-list"} exact component={PoolPackageList} />
                         <Route path={url + "/my-package"} exact component={ClientPoolPackage} />
                         <Route path={url + "/my-appointments"} exact component={ClientAppointmentList} />
-                        {/* <Route path={url + "/choose-package"} exact component={ChoosePoolPackage} />
-                        <Route path={url + "/payment"} exact component={Payment} /> */}
+                        {/* <Route path={url + "/choose-package"} exact component={ChoosePoolPackage} /> */}
+                        <Route path={url + "/payment"} exact component={Payment} />
                         <Route exact path={url + "/home"} component={ClientHomePage} />
                         <Route exact path={url} component={ClientHomePage} />
                     </div>

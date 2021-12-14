@@ -15,6 +15,7 @@ import { Formatter } from '../utilities/Formatter'
 import ChangePackageButton from '../components/ChangePackageButton'
 export default function Payment() {
     const checkout = useSelector(state => state.checkout)
+    console.log(checkout)
     const history = useHistory()
     const [loading, setLoading] = useState(true)
     useEffect(() => {
@@ -68,7 +69,7 @@ export default function Payment() {
             }
         })
     }
-
+    console.log(checkout)
     return checkout.poolPackage && (
 
         <div>

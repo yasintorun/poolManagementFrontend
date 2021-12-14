@@ -31,3 +31,16 @@ export function DeleteAlert(header, text, callBack) {
     }
   })
 }
+
+export function InfoAlert(header, text, callBack) {
+  Swal.fire({
+    title: header,
+    text: text,
+    icon: 'info',
+    confirmButtonText: 'Anladım',
+  }).then((result) => {
+    if (result.isConfirmed) {
+      callBack && callBack()
+    }
+  })
+}

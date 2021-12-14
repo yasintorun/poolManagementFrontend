@@ -1,11 +1,13 @@
-import React, { useEffect } from 'react'
+import React, { useCallback, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
+import { useHistory } from 'react-router'
 import { Button, Popup, Table } from 'semantic-ui-react'
 import PageHeader from '../../components/Headers/PageHeader'
 import PoolPackage from '../../components/PoolPackage'
 import AuthService from '../../services/authService'
+import { choosePoolPackage } from '../../store/actions/checkoutActions'
 import { deletePoolPackage } from '../../store/actions/poolPackageActions'
-import { DeleteAlert } from '../../utilities/AlertMessages/YTAlerts'
+import { DeleteAlert, InfoAlert } from '../../utilities/AlertMessages/YTAlerts'
 import RoleBasedAction from '../../utilities/RoleBasedAction'
 import PoolPackageAdd from './PoolPackageAdd'
 import PoolPackageEdit from './PoolPackageEdit'
@@ -13,10 +15,13 @@ import PoolPackageEdit from './PoolPackageEdit'
 export default function PoolPackageList() {
     const poolPackages = useSelector(state => state.poolPackages)
     const auth = useSelector(state => state.auth)
+    const userPackage = useSelector(state => state.userPackage)
     const dispatch = useDispatch()
     const packageDeleteClick = (packageId) => {
         DeleteAlert("Havuz Paketi", "Bu işlem geri alınamaz. Pakete dahil olan kullanıcıların paketi iptal olacaktır.", () => dispatch(deletePoolPackage(packageId)))
     }
+
+    const history = useHistory()
 
     useEffect(() => {
     }, [])
@@ -30,36 +35,22 @@ export default function PoolPackageList() {
         )
     })
 
+    const BuyPackage = (pack) => {
+        if (userPackage?.data) {
+            InfoAlert("Uyarı", "Bir havuz paketine üyesin. Farklı bir paket almak için yönetici ile görüşmeniz gerekmektedir.")
+        } else {
+            dispatch(choosePoolPackage(pack))
+            history.push("/dashboard/payment")
+        }
+    }
     //Client actions
-    const ClientActions = React.useMemo(() => {
+    const ClientActions = (pack) => React.useMemo(() => {
         return (
             <div>
-                <Button positive>Paketi Satın Al</Button>
+                <Button positive onClick={() => BuyPackage(pack)}>Paketi Satın Al</Button>
             </div>
         )
     })
-
-    const Actions = () => {
-        return 
-        switch (auth?.data?.role?.roleId) {
-            case 2:
-                return (
-                    <div>
-                        <Button positive>Paketi Düzenle</Button>
-                    </div>
-                )
-            case 4:
-                return (
-                    <div>
-                        <Button positive>Paketi Satın Al</Button>
-                    </div>
-                )
-            default:
-                return (
-                    <>Paketi satın almak için üye ol</>
-                ) 
-        }
-    }
 
     return (
         <div>
@@ -73,9 +64,9 @@ export default function PoolPackageList() {
                     <div className="flexbox">
                         {poolPackages?.data?.map(pack => (
                             <PoolPackage poolPackage={pack}>
-                                <RoleBasedAction 
+                                <RoleBasedAction
                                     admin={AdminActions}
-                                    client={ClientActions}
+                                    client={ClientActions(pack)}
                                     notAuthorize={<>Paketi satın almak için üye ol</>}
                                 />
                             </PoolPackage>

@@ -3,6 +3,7 @@ import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { Route, Switch, useHistory } from 'react-router'
 import _404NotFound from '../pages/Errors/_404NotFound'
+import AuthService from '../services/authService'
 import { getAllRoles } from '../store/actions/roleActions'
 import { getUserPoolPackage } from '../store/actions/userPoolPackageActions'
 import { PathRedirect, ProtectedRoute } from '../utilities/customs/YTRoute'
@@ -24,7 +25,7 @@ export default function Dashboard() {
     // }, [auth.data])
 
     useEffect(() => {
-        if(auth?.data?.role?.roleId == 4) {
+        if(AuthService.isClient()) {
             dispatch(getUserPoolPackage(6))
         }
     }, [])

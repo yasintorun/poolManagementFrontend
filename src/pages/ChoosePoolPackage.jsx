@@ -21,7 +21,7 @@ export default function ChoosePoolPackage() {
         return (
             <div className="price-card">
                 <div className={headerClass + " price-card-header"}>
-                    <h1>{parseInt(poolPackage.packagePeriod / 30) + " Ay"}</h1>
+                    <h1>{poolPackage.packagePeriod + " Ay"}</h1>
                     <p>{poolPackage.packageName}</p>
                 </div>
                 <div className="price-card-body text-center py-4">
