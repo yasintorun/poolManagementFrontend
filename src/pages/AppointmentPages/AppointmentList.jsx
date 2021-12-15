@@ -11,11 +11,11 @@ export default function AppointmentList() {
     return (
         <div>
             <PageHeader text="Randevular" />
-            {/* <div className="d-flex justify-content-end">
+            <div className="d-flex justify-content-end">
                 <Button positive icon="plus" content="Randevu Oluştur" as={NavLink} to="/dashboard/appointment-add"/> 
-            </div> */}
+            </div>
 
-            <div>
+            <div className='my-4'>
                 <div className="">
                     <div className="card">
                         <div className="card-header">
