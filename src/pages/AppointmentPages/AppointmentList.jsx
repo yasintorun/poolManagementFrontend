@@ -7,6 +7,7 @@ import AppointmentAdd from './AppointmentAdd'
 
 export default function AppointmentList() {
     const appointments = useSelector(state => state.appointments)
+    console.log(appointments)
     return (
         <div>
             <PageHeader text="Randevular" />
@@ -35,78 +36,17 @@ export default function AppointmentList() {
                                         </tr>
                                     </thead>
                                     <tbody className="">
+                                    {appointments?.data?.map(app => (
                                         <tr>
-                                            <td>1</td>
-                                            <td>Ali Doğan</td>
-                                            <td>Ankara Üniversitesi Olimpik Yüzme Havuzu</td>
-                                            <td>Şerit A</td>
-                                            <td>12.00</td>
-                                            <td>13.30</td>
-                                            <td>21 Haziran 2021</td>
+                                            <td><strong>{app.appointmentId}</strong></td>
+                                            <td>{app.user.firstname + " " + app.user.lastname}</td>
+                                            <td>{app.pool.poolName}</td>
+                                            <td>{app.lane.laneName}</td>
+                                            <td>{app.startTime}</td>
+                                            <td>{app.endTime}</td>
+                                            <td>{app.date}</td>
                                         </tr>
-                                        <tr>
-                                            <td>1</td>
-                                            <td>Ali Doğan</td>
-                                            <td>Ankara Üniversitesi Olimpik Yüzme Havuzu</td>
-                                            <td>Şerit A</td>
-                                            <td>12.00</td>
-                                            <td>13.30</td>
-                                            <td>21 Haziran 2021</td>
-                                        </tr>
-                                        <tr>
-                                            <td>1</td>
-                                            <td>Ali Doğan</td>
-                                            <td>Ankara Üniversitesi Olimpik Yüzme Havuzu</td>
-                                            <td>Şerit A</td>
-                                            <td>12.00</td>
-                                            <td>13.30</td>
-                                            <td>21 Haziran 2021</td>
-                                        </tr>
-                                        <tr>
-                                            <td>1</td>
-                                            <td>Ali Doğan</td>
-                                            <td>Ankara Üniversitesi Olimpik Yüzme Havuzu</td>
-                                            <td>Şerit A</td>
-                                            <td>12.00</td>
-                                            <td>13.30</td>
-                                            <td>21 Haziran 2021</td>
-                                        </tr>
-                                        <tr>
-                                            <td>1</td>
-                                            <td>Ali Doğan</td>
-                                            <td>Ankara Üniversitesi Olimpik Yüzme Havuzu</td>
-                                            <td>Şerit A</td>
-                                            <td>12.00</td>
-                                            <td>13.30</td>
-                                            <td>21 Haziran 2021</td>
-                                        </tr>
-                                        <tr>
-                                            <td>1</td>
-                                            <td>Ali Doğan</td>
-                                            <td>Ankara Üniversitesi Olimpik Yüzme Havuzu</td>
-                                            <td>Şerit A</td>
-                                            <td>12.00</td>
-                                            <td>13.30</td>
-                                            <td>21 Haziran 2021</td>
-                                        </tr>
-                                        <tr>
-                                            <td>1</td>
-                                            <td>Ali Doğan</td>
-                                            <td>Ankara Üniversitesi Olimpik Yüzme Havuzu</td>
-                                            <td>Şerit A</td>
-                                            <td>12.00</td>
-                                            <td>13.30</td>
-                                            <td>21 Haziran 2021</td>
-                                        </tr>
-                                        <tr>
-                                            <td>1</td>
-                                            <td>Ali Doğan</td>
-                                            <td>Ankara Üniversitesi Olimpik Yüzme Havuzu</td>
-                                            <td>Şerit A</td>
-                                            <td>12.00</td>
-                                            <td>13.30</td>
-                                            <td>21 Haziran 2021</td>
-                                        </tr>
+                                    ))}
                                     </tbody>
                                 </table>
                             </div>
