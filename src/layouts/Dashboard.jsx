@@ -32,14 +32,14 @@ export default function Dashboard() {
 
     const RoleBasedAuth = () => {
         switch (auth?.data?.role?.roleId) {
-            case 2: //admin
+            case 1: //admin
                 return (
                     <>
                         <ProtectedRoute path="/dashboard*" exact component={AdminDashboard} />
                         <PathRedirect path="/dashboard" to="/dashboard/home"/>
                     </>
                 )
-            case 4: //kullanıcı
+            case 2: //kullanıcı
                 return (
                     <>
                         <ProtectedRoute path="/dashboard*" exact component={ClientDashboard} />

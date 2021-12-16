@@ -11,14 +11,18 @@ import YTDropdown from '../../utilities/customs/YTDropdown'
 import { useDispatch } from 'react-redux'
 import { addAppointment } from '../../store/actions/appointmentActions'
 import { Formatter } from '../../utilities/Formatter'
+import UserDropdown from '../../components/Dropdowns/UserDropdown'
 
 export default function AppointmentAdd() {
 
-    const initialValues = { user: { userId: 4 }, pool: { poolId: "" }, lane: { laneId: "" }, startTime: "", endTime: "" };
+    const initialValues = { user: { userId: "" }, pool: { poolId: "" }, lane: { laneId: "" }, startTime: "", endTime: "" };
 
     const dispatch = useDispatch()
 
     const schema = Yup.object().shape({
+        user:Yup.object().shape({
+            userId:Yup.number().required("Kullnıcı id zorunlu"),
+        }),
         pool: Yup.object().shape({
             poolId: Yup.number().required("Havuz id zorunlu"),
         }),
@@ -65,6 +69,10 @@ export default function AppointmentAdd() {
                             >
                                 {props => (
                                     <Form className="ui form form-large form-display-1">
+                                        <Form.Field>
+                                            <label>Kullanıcı</label>
+                                            <UserDropdown name="user.userId" />
+                                        </Form.Field>
                                         <Form.Field>
                                             <label>Havuz</label>
                                             <PoolDropdown name="pool.poolId" />
