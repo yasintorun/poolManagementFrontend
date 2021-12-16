@@ -14,12 +14,12 @@ export default class AuthService{
     static isAdmin() {
         let auth = JSON.parse(Cookies.get(CookieTypes.AUTH))
         console.log(auth)
-        return auth?.role?.roleId == 2
+        return auth?.role?.roleId == 1
     }
     
     static isClient() {
         let auth = JSON.parse(Cookies.get(CookieTypes.AUTH))
-        return auth?.role?.roleId == 4
+        return auth?.role?.roleId == 2
     }
 
     static getRole() {
