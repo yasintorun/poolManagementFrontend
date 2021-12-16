@@ -88,7 +88,7 @@ export default function AdminDashboard() {
                 </Button>
                 <Button className="p-4 sidebar-default-btn" as={NavLink} to={url + "/user-list"}>
                     <Icon name="users " />
-                    Kullanıcılar
+                    Kullanıcılaras
                 </Button>
                 <Button className="p-4 sidebar-default-btn" as={NavLink} to={url + "/pool-list"}>
                     <Icon name="map " />
