@@ -19,6 +19,7 @@ import { useDispatch } from 'react-redux'
 import { logout } from '../store/actions/authActions'
 import PoolPackageList from '../pages/PoolPackagePages/PoolPackageList'
 import PoolDetail from '../pages/PoolPages/PoolDetail'
+import PoolAdd from '../pages/PoolPages/PoolAdd'
 
 export default function AdminDashboard() {
     const [isProfileOpen, setIsProfileOpen] = useState(false)
@@ -92,6 +93,10 @@ export default function AdminDashboard() {
                     <Icon name="map " />
                     Havuzlar
                 </Button>
+                <Button className="p-4 sidebar-default-btn" as={NavLink} to={url + "/pool-add"}>
+                    <Icon name="map " />
+                    Havuz Ekle
+                </Button>
                 <Button className="p-4 sidebar-default-btn" as={NavLink} to={url + "/pool-package-list"}>
                     <Icon name="list " />
                     Havuz Paketleri
@@ -111,6 +116,7 @@ export default function AdminDashboard() {
                 <YTSwitch>
                     <div className="w-85 m-auto">
                         <Route path={url + "/pool-list"} component={PoolList} exact />
+                        <Route path={url + "/pool-add"} component={PoolAdd} exact />
                         <Route path={url + "/pool-list/detail/:id"} component={PoolDetail} exact />
                         <Route path={url + "/pool-lane-list"} component={PoolLaneList} exact />
                         <Route path={url + "/role-list"} component={RoleList} exact />
