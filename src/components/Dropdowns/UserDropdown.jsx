@@ -9,6 +9,7 @@ export default function UserDropdown({...props}) {
     return (
         <Form.Field >
             <YTDropdown
+                search
                 placeholder='Kullanıcı seçiniz'
                 {...props}
                 options={users?.data?.map((u, index) => {
