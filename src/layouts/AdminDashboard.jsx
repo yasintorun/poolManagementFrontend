@@ -21,6 +21,7 @@ import PoolPackageList from '../pages/PoolPackagePages/PoolPackageList'
 import PoolDetail from '../pages/PoolPages/PoolDetail'
 import PoolAdd from '../pages/PoolPages/PoolAdd'
 import PoolLaneAdd from '../pages/PoolLanePages/PoolLaneAdd'
+import AdminHome from '../pages/Admin/AdminHome'
 
 export default function AdminDashboard() {
     const [isProfileOpen, setIsProfileOpen] = useState(false)
@@ -120,7 +121,7 @@ export default function AdminDashboard() {
                         <Route path={url + "/appointment-list"} component={AppointmentList} exact />
                         <Route path={url + "/appointment-add"} component={AppointmentAdd} exact />
                         <Route path={url + "/pool-package-list"} component={PoolPackageList} exact />
-                        <Route path={url + "/home"} exact />
+                        <Route path={url + "/home"}  component={AdminHome} exact/>
                         <Route path={url} exact />
                     </div>
                 </YTSwitch>

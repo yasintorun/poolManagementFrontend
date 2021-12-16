@@ -22,3 +22,7 @@ body {
 .navbar-action {
     cursor: pointer;
 }
+
+.statistic-card{
+    color: white;
+}
