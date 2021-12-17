@@ -3,6 +3,7 @@ import React from 'react'
 import { NavLink } from 'react-router-dom'
 import { Button, Form, Grid, Header, Icon, Image, Message, Segment } from 'semantic-ui-react'
 import AuthPage from '../components/AuthPage'
+import logo from '../assets/images/pool_logo.png'
 
 const genderOptions = [
     { key: 'man', value: '1', text: 'Erkek' },
@@ -15,7 +16,7 @@ function RegisterPage() {
         <AuthPage>
             <div className="">
                 <div className="text-center my-3 mb-5">
-                    <img src="https://jobick.dexignlab.com/xhtml/images/logo-full.png" /> {/*ToDo: Buradaki logoyu değiştir.*/}
+                    <img className="img-fluid" src={logo} /> {/*ToDo: Buradaki logoyu değiştir.*/}
                     <h2 className="fw-lighter">Hemen Üye Olun</h2>
                 </div>
                 <Form size='large'>

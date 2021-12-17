@@ -17,7 +17,7 @@ export default function PoolPackage({ header, price, img, headerColor, children,
                     </div>
                     <div className="pt-4">
                         {children}
-                    </div>
+                    </div>  
                 </div>
             </div>
         </div>

@@ -9,6 +9,7 @@ import * as Yup from 'yup'
 import AuthService from '../services/authService';
 import { login } from '../store/actions/authActions';
 import AuthPage from '../components/AuthPage';
+import logo from '../assets/images/pool_logo.png'
 export default function LoginPage() {
 
     const initialValues = { email: "", password: "" };
@@ -36,8 +37,8 @@ export default function LoginPage() {
         <AuthPage>
             <div className="">
                 <div className="text-center my-3 mb-5">
-                    <img src="https://jobick.dexignlab.com/xhtml/images/logo-full.png" /> {/*ToDo: Buradaki logoyu değiştir.*/}
-                    <h2 className="fw-lighter">Hesabınızla giriş yapın</h2>
+                    <img className="img-fluid" src={logo} /> {/*ToDo: Buradaki logoyu değiştir.*/}
+                    {/* <h2 className="fw-lighter">Hesabınızla giriş yapın</h2> */}
                 </div>
                 <div>
                     <Formik
