@@ -4,7 +4,7 @@ export default function PoolPackage({ header, price, img, headerColor, children,
     return (
         <div className="flexbox-item" style={cardStyle}>
             <div className="card text-center">
-                <div className="card-header d-block text-white" style={{ background: headerColor??poolPackage.packageColor }}>
+                <div className="card-header d-block" style={{ background: headerColor??poolPackage.packageColor }}>
                     <h3>{header??poolPackage?.packageName}</h3>
                 </div>
                 <div className="card-body">

@@ -22,7 +22,7 @@ import AdminDashboard from './layouts/AdminDashboard'
 import { addPoolLanes, getAllPoolLanes } from './store/actions/poolLaneActions';
 import { getAllRoles } from './store/actions/roleActions';
 import { getAllUsers } from './store/actions/userActions';
-import { getAllAppointments } from './store/actions/appointmentActions';
+import { getAllAppointments, getAllAppointmentsByUserId } from './store/actions/appointmentActions';
 import _404NotFound from './pages/Errors/_404NotFound';
 import _500InternalServer from './pages/Errors/_500InternalServer';
 import YTSwitch from './utilities/customs/YTSwitch';
@@ -31,29 +31,46 @@ import { types } from './services/localStoregeService';
 import { PathRedirect, ProtectedRoute } from './utilities/customs/YTRoute';
 import RoleService from './services/roleService'
 import { getAllPoolPackages } from './store/actions/poolPackageActions';
+import AuthService from './services/authService';
 require('dotenv').config()
 
 
 
 function App() {
-
+  const [isLoaded, setIsLoaded] = useState(false)
   const dispatch = useDispatch()
   const history = useHistory()
   const location = useLocation()
   const auth = useSelector(state => state.auth)
 
   useEffect(() => {
-    dispatch(getAllPools)
-    dispatch(getAllPoolLanes)
-    dispatch(getAllRoles)
-    dispatch(getAllUsers)
-    dispatch(getAllAppointments)
-    dispatch(getAllPoolPackages)
+    
+    
+    
+    
   }, [])
 
   useEffect(() => {
     if(auth.data != null && !location.pathname.startsWith("/dashboard")) {
       history.push("/dashboard")
+    }
+
+    if(!isLoaded) {
+      setIsLoaded(true)
+      dispatch(getAllPools)
+      dispatch(getAllPoolLanes)
+      dispatch(getAllPoolPackages)
+      
+      if(AuthService.isAdmin()) {
+        dispatch(getAllRoles)
+        dispatch(getAllUsers)
+        dispatch(getAllAppointments)
+      }
+      else if(AuthService.isClient()) {
+        dispatch(getAllAppointmentsByUserId(1))
+        
+      }
+      
     }
   }, [auth.data])
 

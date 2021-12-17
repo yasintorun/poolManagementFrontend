@@ -8,22 +8,26 @@ const api_url = "/auth"
 export default class AuthService{
     async login(account) {
         const response = await api().post(api_url +"/login", account)
+    }
 
+    static getAuth() {
+        let auth = Cookies.get(CookieTypes.AUTH)
+        if(!auth) {
+            return null
+        }
+        return JSON.parse(auth)
     }
 
     static isAdmin() {
-        let auth = JSON.parse(Cookies.get(CookieTypes.AUTH))
-        console.log(auth)
-        return auth?.role?.roleId == 1
+        return this.getRole() == 1
     }
     
     static isClient() {
-        let auth = JSON.parse(Cookies.get(CookieTypes.AUTH))
-        return auth?.role?.roleId == 2
+        return this.getRole() == 2
     }
 
     static getRole() {
-        let auth = JSON.parse(Cookies.get(CookieTypes.AUTH))
+        let auth = this.getAuth()
         if(!!auth) {
             return auth?.role?.roleId
         }

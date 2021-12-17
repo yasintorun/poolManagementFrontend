@@ -1,7 +1,15 @@
 import React from 'react'
+import { useEffect } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
 import PageHeader from '../../components/Headers/PageHeader'
+import { getAllAppointmentsByUserId } from '../../store/actions/appointmentActions'
+import { Formatter } from '../../utilities/Formatter'
 
 export default function ClientAppointmentList() {
+    const appointments = useSelector(state => state.appointments)
+    console.log(appointments)
+    const dispatch = useDispatch()
+
     return (
         <div>
             <PageHeader text="Randevularım" />
@@ -23,46 +31,16 @@ export default function ClientAppointmentList() {
                                 </tr>
                             </thead>
                             <tbody className="">
-                                <tr>
-                                    <td> 1 </td>
-                                    <td>Milli Olimpiyat Yüzme Havuzu</td>
-                                    <td>Şerit A</td>
-                                    <td>13:45</td>
-                                    <td>15:45</td>
-                                    <td>1 Haziran 2021 </td>
-                                </tr>
-                                <tr>
-                                    <td> 1 </td>
-                                    <td>Milli Olimpiyat Yüzme Havuzu</td>
-                                    <td>Şerit A</td>
-                                    <td>13:45</td>
-                                    <td>15:45</td>
-                                    <td>1 Haziran 2021 </td>
-                                </tr>
-                                <tr>
-                                    <td> 1 </td>
-                                    <td>Milli Olimpiyat Yüzme Havuzu</td>
-                                    <td>Şerit A</td>
-                                    <td>13:45</td>
-                                    <td>15:45</td>
-                                    <td>1 Haziran 2021 </td>
-                                </tr>
-                                <tr>
-                                    <td> 1 </td>
-                                    <td>Milli Olimpiyat Yüzme Havuzu</td>
-                                    <td>Şerit A</td>
-                                    <td>13:45</td>
-                                    <td>15:45</td>
-                                    <td>1 Haziran 2021 </td>
-                                </tr>
-                                <tr>
-                                    <td> 1 </td>
-                                    <td>Milli Olimpiyat Yüzme Havuzu</td>
-                                    <td>Şerit A</td>
-                                    <td>13:45</td>
-                                    <td>15:45</td>
-                                    <td>1 Haziran 2021 </td>
-                                </tr>
+                                {appointments?.data?.map(ap => (
+                                    <tr>
+                                        <td>{ap.appointmentId}</td>
+                                        <td>{ap.pool.poolName}</td>
+                                        <td>{ap.lane.laneName}</td>
+                                        <td>{ap.startTime}</td>
+                                        <td>{ap.endTime}</td>
+                                        <td>{Formatter.ToLongDate(ap.date)}</td>
+                                    </tr>
+                                ))}
                             </tbody>
                         </table>
                     </div>

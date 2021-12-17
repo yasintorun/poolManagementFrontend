@@ -18,6 +18,16 @@ export const getAllAppointments = async (dispatch) => {
     }
 }
 
+export const getAllAppointmentsByUserId = (userId) => async(dispatch) => {
+    dispatch({type: appointmentTypes.GET_APPOINTMENT_START})
+    try {
+        const response = await api().get(api_url + `/getallappointmentsbyuserid?userId=${userId}`)
+        dispatch({type: appointmentTypes.GET_APPOINTMENT_SUCCESS, payload: response.data.data})
+    } catch {
+        dispatch({type: appointmentTypes.GET_APPOINTMENT_ERROR})
+    }
+}
+
 export const addAppointment = (appointment) => async(dispatch) => {
     return CallBack(api().post(api_url +"/addappointment", appointment), dispatch, getAllAppointments)
 }

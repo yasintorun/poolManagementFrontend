@@ -55,10 +55,10 @@ export default function PoolPackageList() {
     return (
         <div>
             <PageHeader text="Havuz Paketleri" />
-            {/* 
+            
             <div className="d-flex justify-content-end">
                 <PoolPackageAdd />
-            </div> */}
+            </div>
             <div className="w-100">
                 <div className="wrapper">
                     <div className="flexbox">

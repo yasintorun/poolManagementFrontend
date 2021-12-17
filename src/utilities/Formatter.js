@@ -14,6 +14,21 @@ export class Formatter {
         return [year, month, day].join('-');
     }
 
+    static ToLongDate(date) {
+        const d = new Date(date)//date= yyyy-MM-dd
+        if (this.isValidDate(d)) {
+            const months = ["", "Ocak", "Şubat", "Mart", "Nisan", "Mayıs", "Haziran", "Temmuz", "Agustos", "Eylül", "Ekim", "Kasım", "Aralık"]
+            let dateValues = date.split('-')
+            console.log(dateValues)
+            return (dateValues[2] +" "+ months[parseInt(dateValues[1])] + " " + dateValues[0])
+        }
+        return undefined
+    }
+
+    static isValidDate(d) {
+        return d instanceof Date && !isNaN(d);
+    }
+
 
     static CreditCardNumber(value) {
         var v = value.replace(/\s+/g, '').replace(/[^0-9]/gi, '')
