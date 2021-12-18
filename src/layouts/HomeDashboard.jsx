@@ -4,7 +4,7 @@ import HomePage from '../pages/HomePage'
 export default function HomeDashboard() {
     return (
         <div>
-            <HomePage/>
+            <HomePage />
         </div>
     )
 }

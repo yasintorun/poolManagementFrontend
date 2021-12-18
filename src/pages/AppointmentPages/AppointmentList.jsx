@@ -3,6 +3,7 @@ import { useSelector } from 'react-redux'
 import { NavLink } from 'react-router-dom'
 import { Button, Table } from 'semantic-ui-react'
 import PageHeader from '../../components/Headers/PageHeader'
+import { Formatter } from '../../utilities/Formatter'
 import AppointmentAdd from './AppointmentAdd'
 
 export default function AppointmentList() {
@@ -44,7 +45,7 @@ export default function AppointmentList() {
                                             <td>{app.lane.laneName}</td>
                                             <td>{app.startTime}</td>
                                             <td>{app.endTime}</td>
-                                            <td>{app.date}</td>
+                                            <td>{Formatter.ToLongDate(app.date)}</td>
                                         </tr>
                                     ))}
                                     </tbody>

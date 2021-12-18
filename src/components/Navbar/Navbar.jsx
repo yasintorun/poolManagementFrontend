@@ -3,7 +3,7 @@ import { Link, NavLink } from 'react-router-dom'
 import './navbar.css'
 export default function Navbar(props) {
     return (
-        <div className="dashboard_navbar">
+        <div className="dashboard_navbar px-2">
             <div className="dashboard_navbar_main d-flex">
                 <div className="brand_header">
                     Pool Management
