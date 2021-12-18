@@ -6,79 +6,17 @@ import '../assets/styles/styles.css'
 import '../assets/styles/default.css'
 import '../assets/styles/animate.css'
 import '../assets/styles/slick.css'
-import logo from '../assets/images/pool_logo.png'
-import bgImage2 from '../assets/images/bg.jpg'
-import bgImage from '../assets/images/header-hero.jpg'
-import footerBg from '../assets/images/footer-bg.jpg'
 import newsletterBg from '../assets/images/newsletter-bg.jpg'
 import { NavLink, Link } from 'react-router-dom'
+import HomeFooter from '../components/Home/HomeFooter'
 export default function HomePage() {
     useEffect(() => {
 
     }, [])
     return (
         <>
-            <header className="header-area">
-                <div className="navbar-area bg-white">
-                    <div className="container">
-                        <div className="row">
-                            <div className="col-lg-12">
-                                <nav className="navbar navbar-expand-lg">
-                                    <a className="navbar-brand" href="index.html">
-                                        <img className='img-fluid' src={logo} width={220} height={"auto"} alt="Logo" />
-                                    </a>
-                                    <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                                        <span className="toggler-icon"></span>
-                                        <span className="toggler-icon"></span>
-                                        <span className="toggler-icon"></span>
-                                    </button>
-
-                                    <div className="collapse navbar-collapse sub-menu-bar" id="navbarSupportedContent">
-                                        <ul className="navbar-nav m-auto">
-                                            <li className="nav-item active">
-                                                <Link to="/">Anasayfa</Link>
-                                            </li>
-                                            <li className="nav-item">
-                                                <Link to="/">Hakkımızda </Link>
-                                            </li>
-                                            <li className="nav-item">
-                                                <Link href="/">İletişim</Link>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                    <div className="navbar-user">
-                                        <ul>
-                                            <li><Link to="/auth/login" className="login">Giriş Yap</Link></li>
-                                            <li><Link to="/auth/register">Üye Ol</Link></li>
-                                        </ul>
-                                    </div>
-                                </nav>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div className="bg_cover" style={{ backgroundImage: `url(${bgImage})` }}>
-                    <div className="header-hero bg_cover d-lg-flex align-items-center" style={{ backgroundColor: "transparent" }}>
-                        <div className="container">
-                            <div className="row">
-                                <div className="col-lg-7">
-                                    <div className="header-hero-content">
-                                        <h1 className="hero-title wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.2s"><b>Yasin Torun</b> <br /><span>Pool Management</span><br /> Ücretsiz <b>Üye Olun.</b></h1>
-
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="header-hero-image d-flex align-items-center wow fadeInRightBig" data-wow-duration="1s" data-wow-delay="1.1s">
-                        <div class="image">
-                            <img className="rounded" src={bgImage2} alt="Hero Image" />
-                        </div>
-                    </div>
-                </div>
-            </header>
-
+            <HomeNavbar/>
+           
             <section class="about-area pt-115">
                 <div class="container">
                     <div class="row justify-content-center">
@@ -254,70 +192,7 @@ export default function HomePage() {
                 </div>
             </section>
 
-            <footer class="footer-area bg_cover" style={{ backgroundImage: `url(${footerBg})` }}>
-                <div class="container">
-                    <div class="footer-widget pt-30 pb-70">
-                        <div class="row">
-                            <div class="col-lg-3 col-sm-6 order-sm-1 order-lg-1">
-                                <div class="footer-about pt-40">
-                                    <a href="#">
-                                        <img src={logo} alt="Logo" />
-                                    </a>
-                                    <p class="text">Biz Ankara merkezli havuz işletme firmasıyız. </p>
-                                </div>
-                            </div>
-                            <div class="col-lg-3 col-sm-6 order-sm-3 order-lg-2">
-                                <div class="footer-link pt-40">
-                                    <div class="footer-title">
-                                        <h5 class="title">Hizmetler</h5>
-                                    </div>
-                                    <ul>
-                                        <li><a href="#">Yarışmalar</a></li>
-                                        <li><a href="#">Etkinlikler</a></li>
-                                        <li><a href="#">Eğitimler</a></li>
-                                        <li><a href="#">Kişisel Paketler</a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="col-lg-3 col-sm-6 order-sm-4 order-lg-3">
-                                <div class="footer-link pt-40">
-                                    <div class="footer-title">
-                                        <h5 class="title">Hakkımızda</h5>
-                                    </div>
-                                    <ul>
-                                        <li><a href="#">Biz kimiz?</a></li>
-                                        <li><a href="#">Kullanım hakları & Gizlilik politikası</a></li>
-                                        <li><a href="#">Eğitmenler</a></li>
-                                        <li><a href="#">Müşteri Şikayeti</a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="col-lg-3 col-sm-6 order-sm-2 order-lg-4">
-                                <div class="footer-contact pt-40">
-                                    <div class="footer-title">
-                                        <h5 class="title">İletişim</h5>
-                                    </div>
-                                    <div class="contact pt-10">
-                                        <p class="text">Bahçelievler Ankara Gölbaşı</p>
-                                        <p class="text">admin@pool.com</p>
-                                        <p class="text">+90 545 123 45 67</p>
-
-                                        <ul class="social mt-40">
-                                            <li><a href="#"><i class="lni-facebook-filled"></i></a></li>
-                                            <li><a href="#"><i class="lni-twitter"></i></a></li>
-                                            <li><a href="#"><i class="lni-instagram-original"></i></a></li>
-                                            <li><a href="#"><i class="lni-linkedin"></i></a></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="footer-copyright text-center">
-                        <p class="text">© 2021 Tüm hakları Saklıdır | Yasin Torun.</p>
-                    </div>
-                </div>
-            </footer>
+            <HomeFooter/>
         </>
     )
 }
