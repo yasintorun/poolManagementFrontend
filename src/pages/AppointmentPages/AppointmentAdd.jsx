@@ -1,5 +1,5 @@
 import { Formik } from 'formik'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import * as Yup from 'yup'
 import { Button, Dropdown, Form } from 'semantic-ui-react'
 import PoolDropdown from '../../components/Dropdowns/PoolDropdown'
@@ -16,14 +16,11 @@ import AuthService from '../../services/authService'
 
 export default function AppointmentAdd() {
 
-    const initialValues = { user: { userId: "" }, pool: { poolId: "" }, lane: { laneId: "" }, startTime: "", endTime: "" };
-
+    const initialValues = { user: { userId: 0 }, pool: { poolId: "" }, lane: { laneId: "" }, startTime: "", endTime: "" };
+    const [user, setUser] = useState({userId: 0})
     const dispatch = useDispatch()
 
     const schema = Yup.object().shape({
-        user:Yup.object().shape({
-            userId:Yup.number().required("Kullnıcı id zorunlu"),
-        }),
         pool: Yup.object().shape({
             poolId: Yup.number().required("Havuz id zorunlu"),
         }),
@@ -46,6 +43,10 @@ export default function AppointmentAdd() {
         dispatch(addAppointment(val))
     }
 
+    useEffect(() => {
+        setUser(AuthService.getClient())
+    }, [])
+
     function checkTime(time) { if (time >= 24) { time -= 24; } if (time < 10) { time = "0" + time } return time } //Zaman kontrol.
 
     const hourOptions = ['07', '08', '09', '10', '11', '12', '13', '14', '15', '16', '17', '18', '19', '20', '21', '22']
@@ -65,6 +66,8 @@ export default function AppointmentAdd() {
                                 initialValues={initialValues}
                                 validationSchema={schema}
                                 onSubmit={(values) => {
+                                    values.user.userId = user.userId
+                                    console.log(values)
                                     addAppointmentSubmit(values)
                                 }}
                             >
@@ -73,11 +76,7 @@ export default function AppointmentAdd() {
                                         <Form.Field>
                                             <label>Kullanıcı</label>
                                             {
-                                                AuthService.isAdmin()&&(<UserDropdown name="user.userId" />)
-                                            }
-                                            
-                                            {// kullanıcıyı default olarak çek
-                                                AuthService.isClient()&&(<input type="text" defaultValue={props.userId} disabled="" tabindex="-1"/>)
+                                                AuthService.isAdmin() ? (<UserDropdown name="user.userId" />) : <input type="text" value={user.firstname+" "+user.lastname} disabled />
                                             }
                                         </Form.Field>
                                         <Form.Field>

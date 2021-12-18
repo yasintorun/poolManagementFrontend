@@ -6,15 +6,16 @@ import YTDropdown from '../../utilities/customs/YTDropdown'
 import AuthService from '../../services/authService'
 
 export default function UserDropdown({...props}) {
-
+    const auth = useSelector(state => state.auth)
     const users = useSelector(state => state.users)
     const dispatch = useDispatch()
     useEffect(() => {
         if(!users) {
-            if(AuthService.isAdmin)
+            if(AuthService.isAdmin())
                 dispatch(getAllUsers)
-            else
-                dispatch(getUser)
+            else {
+                dispatch(getUser(auth.data.accountId))
+            }
         }
     }, [])
     return (

@@ -89,9 +89,9 @@ export default function ClientDashboard() {
 
             <main className="dashboard_main">
                 <YTSwitch>
-                    <div className='w-100'>
+                    {/* <div className='w-100'>
                         <Route path={url + "/resetpassword"} exact component={ResetPassword} />
-                    </div>
+                    </div> */}
                     <div className="w-85 m-auto">
                         <Route path={url + "/pool-list"} component={PoolList} exact />
                         <Route path={url + "/pool-list/detail/:id"} component={PoolDetail} exact />

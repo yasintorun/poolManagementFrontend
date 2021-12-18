@@ -18,6 +18,14 @@ export default class AuthService{
         return JSON.parse(auth)
     }
 
+    static getClient() {
+        let client = Cookies.get(CookieTypes.CLIENT)
+        if(!client) {
+            return null
+        }
+        return JSON.parse(client)
+    }
+
     static isAdmin() {
         return this.getRole() == 1
     }
