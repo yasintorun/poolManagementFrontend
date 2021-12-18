@@ -12,6 +12,7 @@ import { useDispatch } from 'react-redux'
 import { addAppointment } from '../../store/actions/appointmentActions'
 import { Formatter } from '../../utilities/Formatter'
 import UserDropdown from '../../components/Dropdowns/UserDropdown'
+import AuthService from '../../services/authService'
 
 export default function AppointmentAdd() {
 
@@ -71,7 +72,13 @@ export default function AppointmentAdd() {
                                     <Form className="ui form form-large form-display-1">
                                         <Form.Field>
                                             <label>Kullanıcı</label>
-                                            <UserDropdown name="user.userId" />
+                                            {
+                                                AuthService.isAdmin()&&(<UserDropdown name="user.userId" />)
+                                            }
+                                            
+                                            {// kullanıcıyı default olarak çek
+                                                AuthService.isClient()&&(<input type="text" defaultValue={props.userId} disabled="" tabindex="-1"/>)
+                                            }
                                         </Form.Field>
                                         <Form.Field>
                                             <label>Havuz</label>

@@ -1,6 +1,8 @@
 import React from 'react'
 import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
+import { NavLink } from 'react-router-dom'
+import { Button } from 'semantic-ui-react'
 import PageHeader from '../../components/Headers/PageHeader'
 import { getAllAppointmentsByUserId } from '../../store/actions/appointmentActions'
 import { Formatter } from '../../utilities/Formatter'
@@ -13,6 +15,9 @@ export default function ClientAppointmentList() {
     return (
         <div>
             <PageHeader text="Randevularım" />
+            <div className="d-flex justify-content-end my-2">
+                <Button positive icon="plus" content="Randevu Oluştur" as={NavLink} to="/dashboard/appointment-add"/> 
+            </div>
             <div class="card">
                 <div class="card-header">
                     <h2>Oluşturmuş Olduğun Tüm Randevu Listesi</h2>

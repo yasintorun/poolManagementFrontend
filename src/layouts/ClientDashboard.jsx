@@ -4,6 +4,7 @@ import { NavLink, Route } from 'react-router-dom'
 import { Button, ButtonGroup, Dropdown, Icon } from 'semantic-ui-react'
 import Navbar from '../components/Navbar/Navbar'
 import SideBar from '../components/SideBar/SideBar'
+import AppointmentAdd from '../pages/AppointmentPages/AppointmentAdd'
 import ChoosePoolPackage from '../pages/ChoosePoolPackage'
 import ClientAppointmentList from '../pages/client/ClientAppointmentList'
 import ClientHomePage from '../pages/client/ClientHomePage'
@@ -96,6 +97,7 @@ export default function ClientDashboard() {
                         <Route path={url + "/pool-list/detail/:id"} component={PoolDetail} exact />
                         <Route path={url + "/pool-package-list"} exact component={PoolPackageList} />
                         <Route path={url + "/my-package"} exact component={ClientPoolPackage} />
+                        <Route path={url + "/appointment-add"} exact component={AppointmentAdd} />
                         <Route path={url + "/my-appointments"} exact component={ClientAppointmentList} />
                         {/* <Route path={url + "/choose-package"} exact component={ChoosePoolPackage} /> */}
                         <Route path={url + "/payment"} exact component={Payment} />
