@@ -32,6 +32,7 @@ import { PathRedirect, ProtectedRoute } from './utilities/customs/YTRoute';
 import RoleService from './services/roleService'
 import { getAllPoolPackages } from './store/actions/poolPackageActions';
 import AuthService from './services/authService';
+import ResetPassword from './pages/ResetPassword';
 require('dotenv').config()
 
 

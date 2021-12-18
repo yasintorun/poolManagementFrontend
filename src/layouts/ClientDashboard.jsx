@@ -12,6 +12,7 @@ import Payment from '../pages/Payment'
 import PoolPackageList from '../pages/PoolPackagePages/PoolPackageList'
 import PoolDetail from '../pages/PoolPages/PoolDetail'
 import PoolList from '../pages/PoolPages/PoolList'
+import ResetPassword from '../pages/ResetPassword'
 import { logout } from '../store/actions/authActions'
 import YTSwitch from '../utilities/customs/YTSwitch'
 export default function ClientDashboard() {
@@ -87,6 +88,9 @@ export default function ClientDashboard() {
 
             <main className="dashboard_main">
                 <YTSwitch>
+                    <div className='w-100'>
+                        <Route path={url + "/resetpassword"} exact component={ResetPassword} />
+                    </div>
                     <div className="w-85 m-auto">
                         <Route path={url + "/pool-list"} component={PoolList} exact />
                         <Route path={url + "/pool-list/detail/:id"} component={PoolDetail} exact />
