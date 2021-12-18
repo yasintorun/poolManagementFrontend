@@ -1,8 +1,9 @@
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { Form } from 'semantic-ui-react'
-import { getAllUsers } from '../../store/actions/userActions'
+import { getAllUsers, getUser } from '../../store/actions/userActions'
 import YTDropdown from '../../utilities/customs/YTDropdown'
+import AuthService from '../../services/authService'
 
 export default function UserDropdown({...props}) {
 
@@ -10,7 +11,10 @@ export default function UserDropdown({...props}) {
     const dispatch = useDispatch()
     useEffect(() => {
         if(!users) {
-            dispatch(getAllUsers)
+            if(AuthService.isAdmin)
+                dispatch(getAllUsers)
+            else
+                dispatch(getUser)
         }
     }, [])
     return (
