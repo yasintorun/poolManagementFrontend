@@ -21,13 +21,17 @@ export default function PoolPackageAdd() {
     const dispatch = useDispatch()
 
     const addPoolPackageSubmit = (values) => {
+        const type = packageTypeOption.find(x => x.value == values.packageType)
+        values.packageColor = type.color
+        values.packageImage = type.image
+        //console.log(values)
         dispatch(addPoolPackage(values))
     }
 
     const packageTypeOption = [
-        {key: 1, value:"Öğrenci", text:"Öğrenci"},
-        {key: 2, value:"Bireysel", text:"Bireysel"},
-        {key: 3, value:"Aile", text:"Aile"}
+        {key: 1, value:"Öğrenci", text:"Öğrenci", color: "#F93A0B", image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR0MyIDsZkejZmvh88NlNNU4w2LFqch63kpPw&usqp=CAU"},
+        {key: 2, value:"Bireysel", text:"Bireysel", color: "#5746A1", image: "https://www.pngkey.com/png/full/303-3030190_individual-icon.png"},
+        {key: 3, value:"Aile", text:"Aile", color: "#4DB950", image: "https://media.baamboozle.com/uploads/images/54557/1589814729_54860"}
     ]
 
     return (
