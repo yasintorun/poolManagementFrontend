@@ -22,6 +22,10 @@ import PoolDetail from '../pages/PoolPages/PoolDetail'
 import PoolAdd from '../pages/PoolPages/PoolAdd'
 import PoolLaneAdd from '../pages/PoolLanePages/PoolLaneAdd'
 import AdminHome from '../pages/Admin/AdminHome'
+import ActivityList from '../pages/ActivityPages/ActivityList'
+import ActivityDetail from '../pages/ActivityPages/ActivityDetail'
+import ActivityAdd from '../pages/ActivityPages/ActivityAdd'
+import ActivityUpdate from '../pages/ActivityPages/ActivityUpdate'
 
 export default function AdminDashboard() {
     const [isProfileOpen, setIsProfileOpen] = useState(false)
@@ -107,6 +111,10 @@ export default function AdminDashboard() {
                     <Icon name="plus" />
                     Randevu Oluştur
                 </Button>
+                <Button className="p-4 sidebar-default-btn" as={NavLink} to={url + "/activity-list"}>
+                    <Icon name="plus" />
+                    Etkinlikler
+                </Button>
 
             </SideBar>
 
@@ -118,6 +126,11 @@ export default function AdminDashboard() {
                         <Route path={url + "/pool-lane-list"} component={PoolLaneList} exact />
                         <Route path={url + "/role-list"} component={RoleList} exact />
                         <Route path={url + "/user-list"} component={UserList} exact />
+                        <Route path={url + "/activity-add"} component={ActivityAdd} exact />
+                        <Route path={url + "/activity-update/:id"} component={ActivityUpdate} exact />
+                        <Route path={url + "/activity-list"} component={ActivityList} exact />
+                        <Route path={url + "/activity-detail/:id"} component={ActivityDetail} exact />
+                        <Route path={url + "/new-activity"} component={ActivityList} exact />
                         <Route path={url + "/appointment-list"} component={AppointmentList} exact />
                         <Route path={url + "/appointment-add"} component={AppointmentAdd} exact />
                         <Route path={url + "/pool-package-list"} component={PoolPackageList} exact />

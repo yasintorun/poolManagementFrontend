@@ -25,7 +25,7 @@ export default function PoolPackageEdit({poolPackage}) {
     return (
         <AddModal
             header="Havuz Paketini Düzenle"
-            trigger={<Button icon="edit" color="facebook" />}
+            trigger={<Button icon="edit" content="Düzenle" color="facebook" />}
         >
             <Formik
                 initialValues={initialValues}

@@ -33,6 +33,8 @@ import RoleService from './services/roleService'
 import { getAllPoolPackages } from './store/actions/poolPackageActions';
 import AuthService from './services/authService';
 import ResetPassword from './pages/ResetPassword';
+import { getAllActivities } from './store/actions/activityActions';
+import { getAllActivityContents } from './store/actions/activityContentActions';
 require('dotenv').config()
 
 
@@ -66,6 +68,8 @@ function App() {
         dispatch(getAllRoles)
         dispatch(getAllUsers)
         dispatch(getAllAppointments)
+        dispatch(getAllActivities)
+        dispatch(getAllActivityContents)
       }
       else if(AuthService.isClient()) {
         dispatch(getAllAppointmentsByUserId(1))

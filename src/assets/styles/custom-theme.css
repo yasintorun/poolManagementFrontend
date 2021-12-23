@@ -173,7 +173,7 @@ thead, tbody, tfoot, tr, td, th {
 
 .ui.form.form-large > .field,
 .ui.form.form-large > .fields   {
-    padding:15px 0px;
+    padding:5px 0px;
 }
 
 .alert.alert-success.solid {

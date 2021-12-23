@@ -43,55 +43,6 @@ export default function UserList() {
                                     </tr>
                                 ))
                             }
-
-                            <tr>
-                                <td>8</td>
-                                <td>
-                                    <img className="profile-btn me-3" width="60" height="60" src="https://randomuser.me/api/portraits/women/31.jpg" />
-                                    Ayşe Yılmaz
-                                </td>
-                                <td>ayse@yilmaz.com</td>
-                                <td>Kadın</td>
-                                <td>
-                                    {false
-                                        ? <span className="badge bg-success">Aktif</span>
-                                        : <span className="badge bg-danger">Pasif</span>
-                                    }
-                                </td>
-                                {/* <td><Icon name="circle" color={user.account.status ? "green" : "red"} /></td> */}
-                            </tr>
-                            <tr>
-                                <td>8</td>
-                                <td>
-                                    <img className="profile-btn me-3" width="60" height="60" src="https://randomuser.me/api/portraits/men/43.jpg" />
-                                    Şahin Burak
-                                </td>
-                                <td>sahin@burak.com</td>
-                                <td>Erkek</td>
-                                <td>
-                                    {true
-                                        ? <span className="badge bg-success">Aktif</span>
-                                        : <span className="badge bg-danger">Pasif</span>
-                                    }
-                                </td>
-                                {/* <td><Icon name="circle" color={user.account.status ? "green" : "red"} /></td> */}
-                            </tr>
-                            <tr>
-                                <td>8</td>
-                                <td>
-                                    <img className="profile-btn me-3" width="60" height="60" src="https://randomuser.me/api/portraits/women/26.jpg" />
-                                    Ayşe Yılmaz
-                                </td>
-                                <td>ayse@yilmaz.com</td>
-                                <td>Kadın</td>
-                                <td>
-                                    {false
-                                        ? <span className="badge bg-success">Aktif</span>
-                                        : <span className="badge bg-danger">Pasif</span>
-                                    }
-                                </td>
-                                {/* <td><Icon name="circle" color={user.account.status ? "green" : "red"} /></td> */}
-                            </tr>
                         </tbody>
                     </table>
                 </div>

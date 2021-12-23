@@ -2,6 +2,8 @@
 
 import { combineReducers } from "redux";
 import { CookieTypes } from "../utilities/cookieTypes";
+import activityContentReducer from "./reducers/activityContentReducer";
+import activityReducer from "./reducers/activityReducer";
 import appointmentReducer from "./reducers/appointmentReducer";
 import authReducer from "./reducers/authReducer";
 import checkoutReducer from "./reducers/checkoutActions";
@@ -23,6 +25,8 @@ const rootReducer = combineReducers({
     roles: roleReducer,
     users: userReducer,
     appointments: appointmentReducer,
+    activities: activityReducer,
+    activityContents: activityContentReducer,
     poolPackages: poolPackageReducer,
     checkout: checkoutReducer,
     userPackage: userPoolPackageReducer,

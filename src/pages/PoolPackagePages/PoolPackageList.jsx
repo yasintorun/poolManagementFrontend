@@ -27,10 +27,10 @@ export default function PoolPackageList() {
     }, [])
 
     //Admin actions
-    const AdminActions = React.useMemo(() => {
+    const AdminActions = (pack) => React.useMemo(() => {
         return (
             <div>
-                <Button positive>Paketi Düzenle</Button>
+                <PoolPackageEdit poolPackage={pack}/>
             </div>
         )
     })
@@ -65,7 +65,7 @@ export default function PoolPackageList() {
                         {poolPackages?.data?.map(pack => (
                             <PoolPackage poolPackage={pack}>
                                 <RoleBasedAction
-                                    admin={AdminActions}
+                                    admin={AdminActions(pack)}
                                     client={ClientActions(pack)}
                                     notAuthorize={<>Paketi satın almak için üye ol</>}
                                 />
