@@ -1,5 +1,5 @@
-import React from 'react'
-
+import React, { useEffect } from 'react'
+import { useLocation } from 'react-router'
 import '../../assets/styles/styles2.css'
 import '../../assets/styles/styles.css'
 import '../../assets/styles/default.css'
@@ -10,7 +10,9 @@ import bgImage2 from '../../assets/images/bg.jpg'
 import bgImage from '../../assets/images/header-hero.jpg'
 import { Link } from 'react-router-dom'
 
-export default function HomeNavbar() {
+export default function HomeNavbar(props) {
+    const location = useLocation()
+
     return (
         <header className="header-area">
                 <div className="navbar-area bg-white">
@@ -29,14 +31,14 @@ export default function HomeNavbar() {
 
                                     <div className="collapse navbar-collapse sub-menu-bar" id="navbarSupportedContent">
                                         <ul className="navbar-nav m-auto">
-                                            <li className="nav-item active">
+                                            <li className={"nav-item " + (location.pathname == '/' ? "active":"")}>
                                                 <Link to="/">Anasayfa</Link>
                                             </li>
-                                            <li className="nav-item">
+                                            <li className={"nav-item " + (location.pathname == '/about' ? "active":"")}>
                                                 <Link to="/">Hakkımızda </Link>
                                             </li>
-                                            <li className="nav-item">
-                                                <Link href="/">İletişim</Link>
+                                            <li className={"nav-item " + (location.pathname=='/contact' ? "active":"")}>
+                                                <Link to="/contact">İletişim</Link>
                                             </li>
                                         </ul>
                                     </div>
@@ -51,26 +53,7 @@ export default function HomeNavbar() {
                         </div>
                     </div>
                 </div>
-
-                <div className="bg_cover" style={{ backgroundImage: `url(${bgImage})` }}>
-                    <div className="header-hero bg_cover d-lg-flex align-items-center" style={{ backgroundColor: "transparent" }}>
-                        <div className="container">
-                            <div className="row">
-                                <div className="col-lg-7">
-                                    <div className="header-hero-content">
-                                        <h1 className="hero-title wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.2s"><b>Yasin Torun</b> <br /><span>Pool Management</span><br /> Ücretsiz <b>Üye Olun.</b></h1>
-
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="header-hero-image d-flex align-items-center wow fadeInRightBig" data-wow-duration="1s" data-wow-delay="1.1s">
-                        <div class="image">
-                            <img className="rounded" src={bgImage2} alt="Hero Image" />
-                        </div>
-                    </div>
-                </div>
+                {props.children}
             </header>
     )
 }

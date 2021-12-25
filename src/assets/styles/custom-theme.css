@@ -117,6 +117,9 @@ thead, tbody, tfoot, tr, td, th {
     background: var(--primary-color);
     color: white;
 }
+.text-orange {
+    color: var(--primary-color);
+}
 .bg-purple {
     background: rgb(87, 70, 161);
     color: white;
@@ -230,4 +233,56 @@ thead, tbody, tfoot, tr, td, th {
 .vertical-scroll {
     overflow-x: scroll;
     width: 100%;
+}
+
+.ui.form .error {
+    max-width: 100% !important;
+}
+
+.yt-spinner {
+    position: fixed;
+    z-index: 99999;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.4);
+    scrollbar-width: none;
+}
+
+.yt-spinner .centered {
+    width: 100%;
+    height: inherit;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 15px;
+    color: var(--primary-hover);
+    overflow-y: hidden;
+}
+
+.no-read {
+    background-color: rgb(183, 255, 207);
+}
+
+.yt-message *{
+    font-size: 18px;
+    color: rgba(37, 37, 37, 0.794);
+}
+
+.profile-img {
+    height: 13.688rem;
+    width: 13.688rem;
+    border-radius: 1.25rem;
+    border: 0.5rem solid #fff;
+}
+
+.contacts-social span i {
+    height: 3.563rem;
+    width: 3.563rem;
+    background: var(--primary-color);
+    color: #fff;
+    border-radius: 3.563rem;
+    text-align: center;
+    line-height: 3.563rem;
+    font-size: 1.5rem;
+    display: block;
 }

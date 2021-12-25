@@ -32,7 +32,7 @@ export default function PoolDetail() {
                     <div className="card-body">
                         {AuthService.isAdmin() &&
                             <div className="py-4">
-                                <PoolImageAdd />
+                                <PoolImageAdd poolId={pool?.pool?.poolId}/>
                             </div>
                         }
                         <PoolCarousel poolImages={pool?.poolImages} />

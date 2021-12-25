@@ -1,4 +1,5 @@
-import React, { useState } from 'react'
+import Cookies from 'js-cookie'
+import React, { useEffect, useState } from 'react'
 import { useDispatch } from 'react-redux'
 import { NavLink, Route } from 'react-router-dom'
 import { Button, ButtonGroup, Dropdown, Icon } from 'semantic-ui-react'
@@ -15,14 +16,27 @@ import PoolDetail from '../pages/PoolPages/PoolDetail'
 import PoolList from '../pages/PoolPages/PoolList'
 import ResetPassword from '../pages/ResetPassword'
 import { logout } from '../store/actions/authActions'
+import { getClientStatistics } from '../store/actions/statisticActions'
+import { CookieTypes } from '../utilities/cookieTypes'
 import YTSwitch from '../utilities/customs/YTSwitch'
-export default function ClientDashboard() {
+import AuthService from '../services/authService'
+import ClientProfilePage from '../pages/client/ClientProfilePage'
+const ClientDashboard = () => {
     const [isProfileOpen, setIsProfileOpen] = useState(false)
     const url = "/dashboard"
     const dispatch = useDispatch()
+    let client = AuthService.getClient()
     const logoutClick = () => {
         dispatch(logout())
     }
+
+    useEffect(() => {
+        client = AuthService.getClient()
+        if (client == null) {
+            // logoutClick()
+            return
+        }
+    }, [client])
 
     return (
         <div className="dashboard">
@@ -39,10 +53,10 @@ export default function ClientDashboard() {
                     </span>
                 </div>
                 <div >
-                    <img className="profile-btn" width="60" height="60" src="https://jobick.dexignlab.com/xhtml/images/profile/pic1.jpg" onClick={() => setIsProfileOpen(!isProfileOpen)} />
+                    <img className="profile-btn" width="60" height="60" src={client?.image?.imagePath ?? "https://jobick.dexignlab.com/xhtml/images/profile/pic1.jpg"} onClick={() => setIsProfileOpen(!isProfileOpen)} />
                     <Dropdown direction="left" open={isProfileOpen} onClick={() => setIsProfileOpen(!isProfileOpen)}>
                         <Dropdown.Menu>
-                            <Dropdown.Item icon="setting" text="Ayarlar" />
+                            <Dropdown.Item icon="user" text="Profilim" as={NavLink} to={url + "/profile"} />
                             <Dropdown.Item icon="sign-out" text="Çıkış Yap" className="text-danger" onClick={() => logoutClick()} />
                         </Dropdown.Menu>
                     </Dropdown>
@@ -89,23 +103,26 @@ export default function ClientDashboard() {
 
             <main className="dashboard_main">
                 <YTSwitch>
-                    {/* <div className='w-100'>
+                    <div className='w-100'>
                         <Route path={url + "/resetpassword"} exact component={ResetPassword} />
-                    </div> */}
-                    <div className="w-85 m-auto">
-                        <Route path={url + "/pool-list"} component={PoolList} exact />
-                        <Route path={url + "/pool-list/detail/:id"} component={PoolDetail} exact />
-                        <Route path={url + "/pool-package-list"} exact component={PoolPackageList} />
-                        <Route path={url + "/my-package"} exact component={ClientPoolPackage} />
-                        <Route path={url + "/appointment-add"} exact component={AppointmentAdd} />
-                        <Route path={url + "/my-appointments"} exact component={ClientAppointmentList} />
-                        {/* <Route path={url + "/choose-package"} exact component={ChoosePoolPackage} /> */}
-                        <Route path={url + "/payment"} exact component={Payment} />
-                        <Route exact path={url + "/home"} component={ClientHomePage} />
-                        <Route exact path={url} component={ClientHomePage} />
+
+                        <div className="w-85 m-auto">
+                            <Route path={url + "/profile"} component={ClientProfilePage} exact />
+                            <Route path={url + "/pool-list"} component={PoolList} exact />
+                            <Route path={url + "/pool-list/detail/:id"} component={PoolDetail} exact />
+                            <Route path={url + "/pool-package-list"} exact component={PoolPackageList} />
+                            <Route path={url + "/my-package"} exact component={ClientPoolPackage} />
+                            <Route path={url + "/appointment-add"} exact component={AppointmentAdd} />
+                            <Route path={url + "/my-appointments"} exact component={ClientAppointmentList} />
+                            {/* <Route path={url + "/choose-package"} exact component={ChoosePoolPackage} /> */}
+                            <Route path={url + "/payment"} exact component={Payment} />
+                            <Route exact path={url + "/home"} component={ClientHomePage} />
+                            <Route exact path={url} component={ClientHomePage} />
+                        </div>
                     </div>
                 </YTSwitch>
             </main>
         </div>
     )
 }
+export default React.memo(ClientDashboard)

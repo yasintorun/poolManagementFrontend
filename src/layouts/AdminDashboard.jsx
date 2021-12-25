@@ -5,7 +5,7 @@ import SideBar from '../components/SideBar/SideBar'
 import '../assets/styles/Dashboard.css'
 import { Route, useHistory } from 'react-router'
 import PoolList from '../pages/PoolPages/PoolList'
-import { NavLink } from 'react-router-dom'
+import { Link, NavLink } from 'react-router-dom'
 import PoolLaneList from '../pages/PoolLanePages/PoolLaneList'
 import RoleList from '../pages/RolePages/RoleList'
 import UserList from '../pages/UserPages/UserList'
@@ -26,6 +26,8 @@ import ActivityList from '../pages/ActivityPages/ActivityList'
 import ActivityDetail from '../pages/ActivityPages/ActivityDetail'
 import ActivityAdd from '../pages/ActivityPages/ActivityAdd'
 import ActivityUpdate from '../pages/ActivityPages/ActivityUpdate'
+import MessageList from '../pages/MessageList'
+import MessageDetail from '../pages/MessageDetail'
 
 export default function AdminDashboard() {
     const [isProfileOpen, setIsProfileOpen] = useState(false)
@@ -40,7 +42,7 @@ export default function AdminDashboard() {
     return (
         <div className="dashboard">
             <Navbar>
-                <div className="navbar-action position-relative">
+                <Link to={url+"/messages"} className="navbar-action position-relative">
                     <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 22.871">
                         <g data-name="Layer 2" transform="translate(-2 -2)">
                             <path id="Path_9" data-name="Path 9" d="M23.268,2H4.73A2.733,2.733,0,0,0,2,4.73V17.471A2.733,2.733,0,0,0,4.73,20.2a.911.911,0,0,1,.91.91v1.94a1.82,1.82,0,0,0,2.83,1.514l6.317-4.212a.9.9,0,0,1,.5-.153h4.436a2.742,2.742,0,0,0,2.633-2L25.9,5.462A2.735,2.735,0,0,0,23.268,2Zm.879,2.978-3.539,12.74a.915.915,0,0,1-.88.663H15.292a2.718,2.718,0,0,0-1.514.459L7.46,23.051v-1.94a2.733,2.733,0,0,0-2.73-2.73.911.911,0,0,1-.91-.91V4.73a.911.911,0,0,1,.91-.91H23.268a.914.914,0,0,1,.879,1.158Z" transform="translate(0 0)"></path>
@@ -52,7 +54,7 @@ export default function AdminDashboard() {
                         27
                         <span className="visually-hidden">unread messages</span>
                     </span>
-                </div>
+                </Link>
                 <div className="navbar-action position-relative">
                     <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24">
                         <g data-name="Layer 2" transform="translate(-2 -2)">
@@ -122,6 +124,8 @@ export default function AdminDashboard() {
                 <YTSwitch>
                     <div className="w-85 m-auto">
                         <Route path={url + "/pool-list"} component={PoolList} exact />
+                        <Route path={url + "/messages"} component={MessageList} exact />
+                        <Route path={url + "/messages/:id"} component={MessageDetail} exact />
                         <Route path={url + "/pool-list/detail/:id"} component={PoolDetail} exact />
                         <Route path={url + "/pool-lane-list"} component={PoolLaneList} exact />
                         <Route path={url + "/role-list"} component={RoleList} exact />

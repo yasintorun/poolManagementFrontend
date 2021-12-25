@@ -5,10 +5,9 @@ import { Button } from 'semantic-ui-react'
 export default function ChangePackageButton() {
     const history = useHistory()
     const handleChangePackageClick = () => {
-        history.push("/dashboard/client/choose-package")
+        history.push("/dashboard/pool-package-list")
     }
     return (
-
-        <Button primary className="mt-4" onClick={() => handleChangePackageClick()}>Paketi Değiştir</Button>
+        <Button color='facebook' className="mt-1" onClick={() => handleChangePackageClick()}>Paketi Değiştir</Button>
     )
 }

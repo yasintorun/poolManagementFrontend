@@ -35,6 +35,9 @@ import AuthService from './services/authService';
 import ResetPassword from './pages/ResetPassword';
 import { getAllActivities } from './store/actions/activityActions';
 import { getAllActivityContents } from './store/actions/activityContentActions';
+import { getAdminStatistics, getClientStatistics } from './store/actions/statisticActions';
+import Spinner from './components/Spinner';
+import { getUserPoolPackage } from './store/actions/userPoolPackageActions';
 require('dotenv').config()
 
 
@@ -47,35 +50,33 @@ function App() {
   const auth = useSelector(state => state.auth)
 
   useEffect(() => {
-    
-    
-    
-    
-  }, [])
 
-  useEffect(() => {
-    if(auth.data != null && !location.pathname.startsWith("/dashboard")) {
-      history.push("/dashboard")
-    }
 
-    if(!isLoaded) {
+    if (!isLoaded) {
       setIsLoaded(true)
       dispatch(getAllPools)
       dispatch(getAllPoolLanes)
       dispatch(getAllPoolPackages)
-      
-      if(AuthService.isAdmin()) {
+
+      if (AuthService.isAdmin()) {
         dispatch(getAllRoles)
         dispatch(getAllUsers)
         dispatch(getAllAppointments)
         dispatch(getAllActivities)
         dispatch(getAllActivityContents)
+        dispatch(getAdminStatistics)
       }
-      else if(AuthService.isClient()) {
+      else if (AuthService.isClient()) {
+        const client = AuthService.getClient()
         dispatch(getAllAppointmentsByUserId(1))
-        
+        dispatch(getClientStatistics(client.userId))
+        dispatch(getUserPoolPackage(client.userId))
       }
-      
+
+      if (auth.data != null && !location?.pathname.startsWith("/dashboard")) {
+        history.push("/dashboard")
+      }
+
     }
   }, [auth.data])
 
@@ -97,7 +98,7 @@ function App() {
       <YTSwitch>
         <ProtectedRoute path="/dashboard*" exact component={Dashboard} />
         <Route path="/auth*" exact component={AuthDashboard} />
-        <Route path="/" component={HomeDashboard} exact />
+        <Route path="/" component={HomeDashboard} />
       </YTSwitch>
     </div>
   );

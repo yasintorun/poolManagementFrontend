@@ -12,6 +12,7 @@ import poolLaneReducer from "./reducers/poolLaneReducer";
 import poolPackageReducer from "./reducers/poolPackageReducer";
 import poolReducer from "./reducers/poolReducer";
 import roleReducer from "./reducers/roleReducer";
+import statisticReducer from "./reducers/statisticReducer";
 import userPoolPackageReducer from "./reducers/userPoolPackageReducer";
 import userReducer from "./reducers/userReducer";
 
@@ -31,6 +32,7 @@ const rootReducer = combineReducers({
     checkout: checkoutReducer,
     userPackage: userPoolPackageReducer,
     images: imageReducer,
+    statistics: statisticReducer,
 })
 
 export default rootReducer

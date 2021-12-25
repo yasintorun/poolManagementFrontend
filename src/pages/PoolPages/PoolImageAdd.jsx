@@ -7,10 +7,10 @@ import AddModal from '../../components/Modals/AddModal';
 import YTInput from '../../utilities/customs/YTInput'
 import PoolService from '../../services/poolService'
 import { useDispatch } from 'react-redux';
-import { addPools } from '../../store/actions/poolActions';
+import { addPools, uploadPoolPhotos } from '../../store/actions/poolActions';
 import Helper from '../../utilities/Helper';
 import { uploadImage } from '../../store/actions/imageActions';
-export default function () {
+export default function PoolImageAdd({poolId}) {
     const [isPhotoLoading, setIsPhotoLoading] = useState(false)
     const [uploadedPhotos, setUploadedPhotos] = useState([])
     const [photoSrc, setPhotoSrc] = useState([])
@@ -27,7 +27,7 @@ export default function () {
             const fileData = new FormData()
             fileData.append("file", photo)
             await Helper.setCallBack(() => {
-                dispatch(uploadImage(fileData, "pools")).then(() => {
+                dispatch(uploadPoolPhotos(fileData, poolId)).then(() => {
                     setTimeout(() => {
                         setIsPhotoLoading(false)
                     }, 100)

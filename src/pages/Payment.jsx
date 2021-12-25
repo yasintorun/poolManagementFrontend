@@ -13,6 +13,8 @@ import Cookies from 'js-cookie'
 import { CookieTypes } from '../utilities/cookieTypes'
 import { Formatter } from '../utilities/Formatter'
 import ChangePackageButton from '../components/ChangePackageButton'
+import PoolPackage from '../components/PoolPackage'
+import AuthService from '../services/authService'
 export default function Payment() {
     const checkout = useSelector(state => state.checkout)
     console.log(checkout)
@@ -41,7 +43,7 @@ export default function Payment() {
 
 
 
-    
+
     const monthOp = ["01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12"].map((v, index) => { return { key: index, value: v, text: v } })
     const yearsOp = Array.from({ length: 8 }, (v, k) => k + 2021).map((v, index) => { return { key: index, value: v + "", text: v } })
 
@@ -54,11 +56,15 @@ export default function Payment() {
             expirationDate: values.month + "/" + values.year.slice(2, 4)
         }
 
+        const client = AuthService.getClient()
+        if(!client.userId) return
+
         const paymentInfo = {
             amount: checkout.poolPackage.packagePrice,
             creditCard: creditCard,
             paymentDate: "",
-            userId: 7,
+            packageId: checkout.poolPackage.packageId,
+            userId: client.userId,
             item: checkout.poolPackage.packageName,
         }
         checkoutService.check(paymentInfo).then(result => {
@@ -69,7 +75,7 @@ export default function Payment() {
             }
         })
     }
-    console.log(checkout)
+
     return checkout.poolPackage && (
 
         <div>
@@ -80,22 +86,12 @@ export default function Payment() {
 
                     <Grid.Row verticalAlign='middle'>
                         <Grid.Column textAlign="left">
-                            <div className="px-2 checkout-item text-dark d-flex justify-content-between align-items-center">
-                                <div className="d-flex align-items-center">
-                                    <Icon name="inbox" color="teal" size="huge" />
-                                    <div className="ps-2">
-                                        <h1>{checkout.poolPackage.packageType}</h1>
-                                        <h4 className="m-0">{checkout.poolPackage.packageName}</h4>
-                                    </div>
-                                </div>
-                                <div className="payment-price text-center">
-                                    <div className="price">
-                                        <span className="price-m">{checkout.poolPackage.packagePrice} </span> ₺ / {parseInt(checkout.poolPackage.packagePeriod / 30)} Ay
-                                    </div>
-                                </div>
-                            </div>
+                            
+                                <PoolPackage cardStyle={{maxWidth: "100%"}} poolPackage={checkout.poolPackage}>
+
+                                </PoolPackage>
                             <div>
-                               <ChangePackageButton />
+                                <ChangePackageButton />
                             </div>
                         </Grid.Column>
 
@@ -119,7 +115,7 @@ export default function Payment() {
                                             </Form.Field>
                                             <Form.Field>
                                                 <label>Ad Soyad</label>
-                                                <YTInput name="cardName"  placeholder='Ad/Soyad' />
+                                                <YTInput name="cardName" placeholder='Ad/Soyad' />
                                             </Form.Field>
                                             <Form.Group widths={2}>
                                                 <Form.Field>

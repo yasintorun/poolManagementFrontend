@@ -32,3 +32,7 @@ export const editPools = (pool) => async (dispatch) => {
 export const deletePool = (poolId) => async (dispatch) => {
     return CallBack(api().delete(api_url +"/deletepool", {data: {poolId: poolId}}), dispatch, getAllPools)
 }
+
+export const uploadPoolPhotos = (file, poolId) => async (dispatch) => {
+    return CallBack(api().post(api_url + "/uploadpoolphoto?poolId="+poolId, file), dispatch, getAllPools)
+}

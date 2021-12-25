@@ -44,3 +44,16 @@ export function InfoAlert(header, text, callBack) {
     }
   })
 }
+
+export function SuccessAlert(header, text, callBack) {
+  Swal.fire({
+    title: header,
+    text: text,
+    icon: 'success',
+    confirmButtonText: 'Tamam',
+  }).then((result) => {
+    if (result.isConfirmed) {
+      callBack && callBack()
+    }
+  })
+}

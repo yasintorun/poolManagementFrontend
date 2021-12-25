@@ -57,7 +57,7 @@ export default function PoolPackageList() {
             <PageHeader text="Havuz Paketleri" />
             
             <div className="d-flex justify-content-end">
-                <PoolPackageAdd />
+                {AuthService.isAdmin() && <PoolPackageAdd />}
             </div>
             <div className="w-100">
                 <div className="wrapper">
