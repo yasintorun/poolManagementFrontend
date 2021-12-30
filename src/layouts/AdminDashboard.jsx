@@ -28,6 +28,7 @@ import ActivityAdd from '../pages/ActivityPages/ActivityAdd'
 import ActivityUpdate from '../pages/ActivityPages/ActivityUpdate'
 import MessageList from '../pages/MessageList'
 import MessageDetail from '../pages/MessageDetail'
+import PoolEdit from '../pages/PoolPages/PoolEdit'
 
 export default function AdminDashboard() {
     const [isProfileOpen, setIsProfileOpen] = useState(false)
@@ -124,6 +125,7 @@ export default function AdminDashboard() {
                 <YTSwitch>
                     <div className="w-85 m-auto">
                         <Route path={url + "/pool-list"} component={PoolList} exact />
+                        <Route path={url + "/pool-edit/:id"} component={PoolEdit} exact />
                         <Route path={url + "/messages"} component={MessageList} exact />
                         <Route path={url + "/messages/:id"} component={MessageDetail} exact />
                         <Route path={url + "/pool-list/detail/:id"} component={PoolDetail} exact />

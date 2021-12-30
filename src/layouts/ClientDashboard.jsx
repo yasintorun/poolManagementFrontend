@@ -53,7 +53,7 @@ const ClientDashboard = () => {
                     </span>
                 </div>
                 <div >
-                    <img className="profile-btn" width="60" height="60" src={client?.image?.imagePath ?? "https://jobick.dexignlab.com/xhtml/images/profile/pic1.jpg"} onClick={() => setIsProfileOpen(!isProfileOpen)} />
+                    <img className="profile-btn" width="60" height="60" src={client?.image?.imagePath ?? "https://kstu.edu.tr/kstu-file/uploads/default-user-image.png"} onClick={() => setIsProfileOpen(!isProfileOpen)} />
                     <Dropdown direction="left" open={isProfileOpen} onClick={() => setIsProfileOpen(!isProfileOpen)}>
                         <Dropdown.Menu>
                             <Dropdown.Item icon="user" text="Profilim" as={NavLink} to={url + "/profile"} />

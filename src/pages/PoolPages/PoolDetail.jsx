@@ -2,11 +2,12 @@ import React, { useEffect, useState } from 'react'
 import { useSelector } from 'react-redux'
 import { Carousel } from 'react-responsive-carousel'
 import { useParams } from 'react-router'
+import { NavLink } from 'react-router-dom'
+import { Button } from 'semantic-ui-react'
 import PageHeader from '../../components/Headers/PageHeader'
 import PoolCarousel from '../../components/PoolCarousel'
 import AuthService from '../../services/authService'
 import PoolImageAdd from './PoolImageAdd'
-
 export default function PoolDetail() {
     let params = useParams()
     const [pool, setPool] = useState({})
@@ -32,8 +33,11 @@ export default function PoolDetail() {
                     <div className="card-body">
                         {AuthService.isAdmin() &&
                             <div className="py-4">
+                                <Button color='facebook' icon="edit" content="Havuzu Düzenle" as={NavLink} to={"/dashboard/pool-edit/"+pool?.pool?.poolId}/>
+                                <br/><br/>
                                 <PoolImageAdd poolId={pool?.pool?.poolId}/>
                             </div>
+                            
                         }
                         <PoolCarousel poolImages={pool?.poolImages} />
                         <div className="mt-4 pt-4">

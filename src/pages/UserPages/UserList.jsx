@@ -1,6 +1,6 @@
 import React from 'react'
 import { useSelector } from 'react-redux'
-import { Icon, Table } from 'semantic-ui-react'
+import { Button, Icon, Table } from 'semantic-ui-react'
 import PageHeader from '../../components/Headers/PageHeader'
 
 export default function UserList() {
@@ -21,6 +21,7 @@ export default function UserList() {
                                 <th>Eposta adresi</th>
                                 <th>Cinsiyet</th>
                                 <th>Durum</th>
+                                <th>İşlemler</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -29,7 +30,7 @@ export default function UserList() {
                                     <tr>
                                         <td>{user.userId}</td>
                                         <td>
-                                            <img className="profile-btn me-3" width="60" height="60" src={`https://randomuser.me/api/portraits/women/${user.userId}.jpg`} />
+                                            <img className="profile-btn me-3" width="60" height="60" src={user?.image?.imagePath ?? "https://kstu.edu.tr/kstu-file/uploads/default-user-image.png"} />
                                             {user.firstname + " " + user.lastname}
                                         </td>
                                         <td>{user.account.email}</td>
@@ -39,6 +40,9 @@ export default function UserList() {
                                                 ? <span className="badge bg-success">Aktif</span>
                                                 : <span className="badge bg-danger">Pasif</span>
                                             }
+                                        </td>
+                                        <td>
+                                            <Button color="facebook">Detay</Button>
                                         </td>
                                     </tr>
                                 ))

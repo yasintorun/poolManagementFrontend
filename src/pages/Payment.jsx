@@ -23,7 +23,7 @@ export default function Payment() {
     useEffect(() => {
         if (!checkout || checkout.poolPackage == null) {
             toast.error("Önce Paket seçmelisiniz.")
-            history.push("/dashboard/client/choose-package")
+            history.push("/dashboard/pool-package-list")
         }
         setTimeout(() => { setLoading(false) }, 500);
 

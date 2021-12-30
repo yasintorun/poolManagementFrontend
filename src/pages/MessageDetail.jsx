@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react'
 import { useState } from 'react'
 import { useParams } from 'react-router'
+import { Button } from 'semantic-ui-react'
 import PageHeader from '../components/Headers/PageHeader'
 import MessageService from '../services/messageService'
 
@@ -21,6 +22,9 @@ function MessageDetail() {
                 <div>
                     <div className='card'>
                         <div className='card-body'>
+                            <div className='mb-5'>
+                                <a className='ui positive button' href={`mailto:${message.email}?body=${message.message}&subject=${message.subject}`}><i class="bi bi-reply-fill"></i> Cevap Ver</a>
+                            </div>
                             <h2>{message?.subject ?? "Konu"}</h2>
                             <div className='my-4 text-orange'>
                                 <strong>Gönderen: </strong> {message?.name}

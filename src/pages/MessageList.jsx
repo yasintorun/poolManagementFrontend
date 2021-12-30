@@ -8,17 +8,17 @@ import {SuccessAlert} from '../utilities/AlertMessages/YTAlerts'
 import { toast } from 'react-toastify'
 export default function MessageList() {
     const [messages, setMessages] = useState([])
+    const [set, setSet] = useState({})
     useEffect(() => {
         const messageService = new MessageService()
         messageService.getAllMessages().then(result => setMessages(result.data.data))
-        console.log(messages)
-    }, [messages])
+    }, [set])
 
     const handleReadMessage = id => {
         const messageService = new MessageService()
         messageService.getMessageById(id).then(result => {
             toast.success("Mesaj okundu olarak işaretlendi");
-            setMessages([])
+            setSet({})
         })  
     }
 

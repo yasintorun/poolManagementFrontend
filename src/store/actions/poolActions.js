@@ -36,3 +36,7 @@ export const deletePool = (poolId) => async (dispatch) => {
 export const uploadPoolPhotos = (file, poolId) => async (dispatch) => {
     return CallBack(api().post(api_url + "/uploadpoolphoto?poolId="+poolId, file), dispatch, getAllPools)
 }
+
+export const deletePoolPhotos = (poolId, imageId) => async (dispatch) => {
+    return CallBack(api().get(api_url + `/deletepoolphoto?imageId=${imageId}&poolId=${poolId}`), dispatch, getAllPools)
+}
