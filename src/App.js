@@ -14,7 +14,7 @@ import SidebarExampleSidebar from './pages/TestSideBar';
 import { createContext, useEffect, useState } from 'react';
 import PoolService from './services/poolService';
 import { getAllPools, addPools, add } from './store/actions/poolActions';
-import { useDispatch, useSelector, useStore } from 'react-redux';
+import { useDispatch, useSelector, useStore, shallowEqual } from 'react-redux';
 import "react-toastify/dist/ReactToastify.min.css"
 import { Button } from 'semantic-ui-react';
 import { ToastContainer } from 'react-toastify';
@@ -47,7 +47,7 @@ function App() {
   const dispatch = useDispatch()
   const history = useHistory()
   const location = useLocation()
-  const auth = useSelector(state => state.auth)
+  const auth = useSelector(state => state.auth, shallowEqual)
 
   useEffect(() => {
 
@@ -68,7 +68,7 @@ function App() {
       }
       else if (AuthService.isClient()) {
         const client = AuthService.getClient()
-        dispatch(getAllAppointmentsByUserId(1))
+        dispatch(getAllAppointmentsByUserId(client.userId))
         dispatch(getClientStatistics(client.userId))
         dispatch(getUserPoolPackage(client.userId))
       }
@@ -78,7 +78,7 @@ function App() {
       }
 
     }
-  }, [auth.data])
+  }, [auth])
 
   return (
     <div className="App">

@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { NavLink } from 'react-router-dom'
 import { Button } from 'semantic-ui-react'
 import PageHeader from '../../components/Headers/PageHeader'
+import AuthService from '../../services/authService'
 import { getAllAppointmentsByUserId } from '../../store/actions/appointmentActions'
 import { Formatter } from '../../utilities/Formatter'
 
@@ -11,7 +12,7 @@ export default function ClientAppointmentList() {
     const appointments = useSelector(state => state.appointments)
     console.log(appointments)
     const dispatch = useDispatch()
-
+    console.log("client appoibtment")
     return (
         <div>
             <PageHeader text="Randevularım" />

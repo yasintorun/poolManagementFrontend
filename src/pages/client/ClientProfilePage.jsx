@@ -1,15 +1,28 @@
 import Cookies from 'js-cookie'
 import React, { useEffect, useState } from 'react'
 import { NavLink } from 'react-router-dom'
+import { useHistory, useParams } from 'react-router'
 import { Button } from 'semantic-ui-react'
 import PageHeader from '../../components/Headers/PageHeader'
 import UpdateProfilePhoto from '../../components/UpdateProfilePhoto'
 import AuthService from '../../services/authService'
+import { useSelector } from 'react-redux'
 
 function ClientProfilePage() {
     const [client, setClient] = useState({})
+    const users = useSelector(state => state.users)
+    const history = useHistory()
+    const params = useParams()
     useEffect(() => {
-        if (!client.userId) {
+        if(params.id && AuthService.isAdmin()) {
+           const u = users.data.find(x=>x.userId == params.id)
+           if(!u) {
+            //    history.push("/dashboard/user-list")
+                return
+            }
+            setClient(u)
+        }
+        else if (!client.userId) {
             const client = AuthService.getClient()
             if (client != null) {
                 setClient(client)
@@ -44,9 +57,12 @@ function ClientProfilePage() {
                                     <div className='my-5'>
                                         <UpdateProfilePhoto userId={client?.userId}/>
                                     </div>
-                                    <div className='my-5'>
-                                        <Button icon="key" content="Şifremi Güncelle" color='facebook' as={NavLink} to="/dashboard/resetpassword" />
-                                    </div>
+                                    {
+                                        AuthService.isAdmin() ||
+                                        <div className='my-5'>
+                                            <Button icon="key" content="Şifremi Güncelle" color='facebook' as={NavLink} to="/dashboard/resetpassword" />
+                                        </div>
+                                    }
                                 </div>
                             </div>
 

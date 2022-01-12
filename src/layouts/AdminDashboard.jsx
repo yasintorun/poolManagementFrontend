@@ -29,6 +29,8 @@ import ActivityUpdate from '../pages/ActivityPages/ActivityUpdate'
 import MessageList from '../pages/MessageList'
 import MessageDetail from '../pages/MessageDetail'
 import PoolEdit from '../pages/PoolPages/PoolEdit'
+import AdminProfile from '../pages/Admin/AdminProfile'
+import ClientProfilePage from '../pages/client/ClientProfilePage'
 
 export default function AdminDashboard() {
     const [isProfileOpen, setIsProfileOpen] = useState(false)
@@ -82,7 +84,7 @@ export default function AdminDashboard() {
                     <img className="profile-btn" width="60" height="60" src="https://jobick.dexignlab.com/xhtml/images/profile/pic1.jpg" onClick={() => setIsProfileOpen(!isProfileOpen)} />
                     <Dropdown direction="left" open={isProfileOpen} onClick={() => setIsProfileOpen(!isProfileOpen)}>
                         <Dropdown.Menu>
-                            <Dropdown.Item icon="setting" text="Ayarlar" />
+                            <Dropdown.Item icon="setting" text="Ayarlar" as={NavLink} to={url+"/setting"} />
                             <Dropdown.Item icon="sign-out" text="Çıkış Yap" className="text-danger" onClick={() => logoutClick()} />
                         </Dropdown.Menu>
                     </Dropdown>
@@ -124,6 +126,7 @@ export default function AdminDashboard() {
             <main className="dashboard_main">
                 <YTSwitch>
                     <div className="w-85 m-auto">
+                        <Route path={url + "/setting"} component={AdminProfile} exact />
                         <Route path={url + "/pool-list"} component={PoolList} exact />
                         <Route path={url + "/pool-edit/:id"} component={PoolEdit} exact />
                         <Route path={url + "/messages"} component={MessageList} exact />
@@ -132,6 +135,7 @@ export default function AdminDashboard() {
                         <Route path={url + "/pool-lane-list"} component={PoolLaneList} exact />
                         <Route path={url + "/role-list"} component={RoleList} exact />
                         <Route path={url + "/user-list"} component={UserList} exact />
+                        <Route path={url + "/user-list/:id"} component={ClientProfilePage} exact />
                         <Route path={url + "/activity-add"} component={ActivityAdd} exact />
                         <Route path={url + "/activity-update/:id"} component={ActivityUpdate} exact />
                         <Route path={url + "/activity-list"} component={ActivityList} exact />

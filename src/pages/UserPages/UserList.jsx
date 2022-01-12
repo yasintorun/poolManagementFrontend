@@ -1,5 +1,6 @@
 import React from 'react'
 import { useSelector } from 'react-redux'
+import { NavLink } from 'react-router-dom'
 import { Button, Icon, Table } from 'semantic-ui-react'
 import PageHeader from '../../components/Headers/PageHeader'
 
@@ -42,7 +43,7 @@ export default function UserList() {
                                             }
                                         </td>
                                         <td>
-                                            <Button color="facebook">Detay</Button>
+                                            <Button color="facebook" as={NavLink} to={"/dashboard/user-list/"+user.userId}>Detay</Button>
                                         </td>
                                     </tr>
                                 ))
